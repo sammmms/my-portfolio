@@ -3,7 +3,7 @@
 import { Download, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
-import { Button } from "@heroui/button";
+import { Button } from "@/components/Button";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import { useTheme } from "next-themes";
@@ -52,7 +52,7 @@ export default function Home() {
           tabIndex={0}
         >
           <img
-            src="/profile.jpg"
+            src="/assets/profile.jpg"
             alt="Profile"
             className="w-full h-full object-cover rounded-2xl pointer-events-none"
           />
@@ -73,10 +73,8 @@ export default function Home() {
       {/* Buttons */}
       <div className="flex gap-4 mb-20 items-center justify-end animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
         <Button
-          as={Link}
           href="/projects"
-          className="bg-black text-white dark:bg-white dark:text-black font-medium px-6"
-          radius="full"
+          className="px-6 py-2 h-12 text-lg" // Adjusted to match size="lg" roughly or just let size handles it
           size="lg"
         >
           <span className="flex items-center gap-2">
@@ -86,10 +84,8 @@ export default function Home() {
         </Button>
 
         <Button
-          as={Link}
-          href="/cv_dec2025.pdf"
-          className="bg-black text-white dark:bg-white dark:text-black font-medium px-6"
-          radius="full"
+          href="/documents/cv_dec2025.pdf"
+          className="px-6 py-2 h-12 text-lg"
           size="lg"
         >
           <span className="flex items-center gap-2">
@@ -155,23 +151,35 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {experiences.slice(0, 3).map((exp, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl bg-white dark:bg-black border border-neutral-100 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
-            >
-              <span className="text-xs font-mono text-neutral-400 block mb-2">
-                {exp.start_date} - {exp.end_date}
-              </span>
-              <h3 className="font-bold text-lg mb-1">{exp.title}</h3>
-              <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 mb-2">
-                {exp.company}
-              </p>
-              <p className="text-xs text-neutral-500">
-                {exp.location.city || exp.location.setting}
-              </p>
-            </div>
-          ))}
+          {experiences.slice(0, 3).map((exp, idx) => {
+            const Content = () => (
+              <div className="h-full p-6 rounded-2xl bg-white dark:bg-black border border-neutral-100 dark:border-neutral-800 hover:border-transparent transition-all group relative overflow-hidden">
+                <div className="absolute inset-0 bg-black dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-0" />
+                <div className="relative z-10 group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
+                  <span className="text-xs font-mono text-neutral-400 group-hover:text-neutral-300 dark:group-hover:text-neutral-700 block mb-2 transition-colors">
+                    {exp.start_date} - {exp.end_date}
+                  </span>
+                  <h3 className="font-bold text-lg mb-1">{exp.title}</h3>
+                  <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:text-neutral-200 dark:group-hover:text-neutral-800 mb-2 transition-colors">
+                    {exp.company}
+                  </p>
+                  <p className="text-xs text-neutral-500 group-hover:text-neutral-400 dark:group-hover:text-neutral-600 transition-colors">
+                    {exp.location.city || exp.location.setting}
+                  </p>
+                </div>
+              </div>
+            );
+
+            return exp.url && exp.url !== "#" ? (
+              <Link key={idx} href={exp.url} target="_blank" className="block">
+                <Content />
+              </Link>
+            ) : (
+              <div key={idx}>
+                <Content />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

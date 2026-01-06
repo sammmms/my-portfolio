@@ -15,4 +15,5 @@ export interface Experience {
   duration: string;
   description: string[];
   skills: string[];
+  url?: string;
 }

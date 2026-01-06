@@ -30,7 +30,7 @@ export default function ProjectSidebar({
   });
 
   return (
-    <section className="w-full lg:w-[40%] flex flex-col gap-6 pb-24 pr-4">
+    <section className="w-full lg:w-[50%] flex flex-col gap-6 pb-24 pr-4">
       <div className="lg:hidden mb-4">
         <h1 className="text-2xl font-bold tracking-tighter">my portfolio</h1>
       </div>
@@ -85,7 +85,7 @@ export default function ProjectSidebar({
                   <div className="flex items-baseline flex-col">
                     <span
                       className={cn(
-                        "text-xl font-medium tracking-wider transition-all",
+                        "text-xl font-medium tracking-tight transition-all",
                         selectedProjectId === project.id
                           ? "underline decoration-1 underline-offset-4"
                           : "group-hover:underline decoration-1 underline-offset-4"

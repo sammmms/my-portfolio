@@ -8,12 +8,18 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useCursor } from "@/context/CursorContext";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, ArrowUp, ArrowDown } from "lucide-react";
 
 export default function Cursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const { variant, nextTheme, isNavigating } = useCursor();
+  const {
+    variant,
+    nextTheme,
+    isNavigating,
+    navigationDirection,
+    navigationId,
+  } = useCursor();
 
   const springConfig = { damping: 50, stiffness: 400 };
   const cursorXSpring = useSpring(cursorX, springConfig);
@@ -54,12 +60,16 @@ export default function Cursor() {
         <AnimatePresence>
           {isNavigating && (
             <motion.div
-              className="absolute inset-0"
+              key={navigationId}
+              className="absolute inset-0 flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
+              <svg
+                className="absolute inset-0 w-full h-full -rotate-90"
+                viewBox="0 0 80 80"
+              >
                 <circle
                   cx="40"
                   cy="40"
@@ -81,6 +91,12 @@ export default function Cursor() {
                   transition={{ duration: 1.5, ease: "linear" }}
                 />
               </svg>
+              {navigationDirection === "up" && (
+                <ArrowUp className="w-8 h-8 text-black relative z-10" />
+              )}
+              {navigationDirection === "down" && (
+                <ArrowDown className="w-8 h-8 text-black relative z-10" />
+              )}
             </motion.div>
           )}
         </AnimatePresence>

@@ -16,6 +16,7 @@ export const experiences: Experience[] = [
     duration: "7 mos",
     description: ["Laravel Backend Developer", "React Frontend Developer"],
     skills: ["Laravel", "PHP", "React.js", "MySQL"],
+    url: "https://bizapps.id",
   },
   {
     title: "Mobile Application Developer",
@@ -32,6 +33,7 @@ export const experiences: Experience[] = [
     duration: "1 yr 3 mos",
     description: [],
     skills: ["REST APIs", "Dart", "Mobile Applications", "Flutter"],
+    url: "https://origamingmedia.com/",
   },
   {
     title: "Mobile Development Cohort",
@@ -53,6 +55,7 @@ export const experiences: Experience[] = [
       "Flutter",
       "XML",
     ],
+    url: "https://grow.google/intl/id_id/bangkit/?tab=machine-learning",
   },
   {
     title: "Mobile Application Developer",
@@ -67,6 +70,7 @@ export const experiences: Experience[] = [
     duration: "2 mos",
     description: [],
     skills: ["Kotlin", "Mobile Applications", "Jetpack Compose", "Trello"],
+    url: "https://amanahcorp.co.id/",
   },
   {
     title: "Co Lead Assistant",
@@ -83,6 +87,7 @@ export const experiences: Experience[] = [
     duration: "1 yr",
     description: [],
     skills: ["Nuxt.js", "C++", "Python (Programming Language)"],
+    url: "https://mpcclub.netlify.app/",
   },
   {
     title: "Finance Administrator",
@@ -99,5 +104,6 @@ export const experiences: Experience[] = [
     duration: "1 yr 8 mos",
     description: [],
     skills: ["Microsoft Excel", "Salary", "Accounting"],
+    url: "https://sehatplastikbinjai.blogspot.com/",
   },
 ];

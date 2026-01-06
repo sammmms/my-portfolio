@@ -8,7 +8,7 @@ export const projects: Project[] = [
     date: "may 2024",
     link: "https://nowvest.vercel.app/",
     description: "msme crowdfunding web platform",
-    src: "/nowvest.png",
+    src: "/projects/nowvest.png",
   },
   {
     id: "royal-prima-flutter",
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     date: "sep 2025",
     link: "http://rsurp.netlify.app/",
     description: "royal prima hospital task management app",
-    src: "rsurp.png",
+    src: "/projects/rsurp.png",
   },
   {
     id: "bisa-absen",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     date: "dec 2024",
     link: "https://www.linkedin.com/posts/samuel-onasis_lifeatbangkit-bangkit24h2-bepchallenge-activity-7275216714416435200-wecH",
     description: "frontend hris mobile app for pt. amanah karya indonesia",
-    src: "/bisa-absen.png",
+    src: "/projects/bisa-absen.png",
   },
   {
     id: "eocout-flutter",
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     date: "jul 2024",
     link: "https://play.google.com/store/apps/details?id=com.eocout.eocout_flutter&pli=1",
     description: "event organizer - customer third party mobile app",
-    src: "/eocout.jpg",
+    src: "/projects/eocout.jpg",
   },
   {
     id: "simple-facial-recognition",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     category: "nuxt",
     date: "dec 2023",
     link: "https://mpcclub.netlify.app/",
-    src: "/mpc-club.png",
+    src: "/projects/mpc-club.png",
     description:
       "mikroskil programming club website to manage member and event",
   },
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     date: "jun 2024",
     link: "https://github.com/sammmms/travellingo-flutter",
     description: "assignment project - your travel companion",
-    src: "/travellingo.png",
+    src: "/projects/travellingo.png",
   },
   {
     id: "mopay-flutter",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     date: "jun 2024",
     description:
       "assignment project - e wallet collaboration payment w/ travellingo",
-    src: "/mopay.jpg",
+    src: "/projects/mopay.jpg",
   },
   {
     id: "hanierick",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     date: "jun 2025",
     link: "https://github.com/hanieric/frontend-vue",
     description: "assignment project - expense, income, and chat app",
-    avatar_src: "/hanierick.png",
+    avatar_src: "/projects/hanierick.png",
   },
   {
     id: "sustainify-frontend",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     link: "https://github.com/sammmms/sustainify-frontend",
     description:
       "assignment project - website for iot trash bin monitoring system",
-    src: "/sustainify.png",
+    src: "/projects/sustainify.png",
   },
   {
     id: "quizzy",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     category: "go, react",
     date: "may 2025",
     description: "assignment project - online quiz management platform",
-    avatar_src: "/quizzy.png",
+    avatar_src: "/projects/quizzy.png",
   },
   {
     id: "agathas-journey",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     link: "https://github.com/sammmms/Agatha-s-Journey",
     description:
       "assignment project - fantasy survival game, with deep spell crafting system",
-    avatar_src: "/agatha-journey.png",
+    avatar_src: "/projects/agatha-journey.png",
   },
   {
     id: "e-othello",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     link: "https://github.com/sammmms/devops-uts",
     description:
       "assignment project - simple to-do app with ci/cd pipeline, and docker",
-    src: "simple-todo.png",
+    src: "/projects/simple-todo.png",
   },
   {
     id: "wanderway",
@@ -134,6 +134,6 @@ export const projects: Project[] = [
     category: "figma",
     date: "nov 2022",
     description: "assignment project - grocery delivery app (figma design)",
-    src: "/wanderway.png",
+    src: "/projects/wanderway.png",
   },
 ];

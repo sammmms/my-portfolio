@@ -11,6 +11,10 @@ interface CursorContextType {
   setNextTheme: (theme: string | null) => void;
   isNavigating: boolean;
   setIsNavigating: (isNavigating: boolean) => void;
+  navigationDirection: "up" | "down" | null;
+  setNavigationDirection: (direction: "up" | "down" | null) => void;
+  navigationId: number;
+  setNavigationId: (id: number) => void;
 }
 
 const CursorContext = createContext<CursorContextType | undefined>(undefined);
@@ -19,6 +23,10 @@ export function CursorProvider({ children }: { children: React.ReactNode }) {
   const [variant, setVariant] = useState<CursorVariant>("default");
   const [nextTheme, setNextTheme] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [navigationDirection, setNavigationDirection] = useState<
+    "up" | "down" | null
+  >(null);
+  const [navigationId, setNavigationId] = useState(0);
 
   return (
     <CursorContext.Provider
@@ -29,6 +37,10 @@ export function CursorProvider({ children }: { children: React.ReactNode }) {
         setNextTheme,
         isNavigating,
         setIsNavigating,
+        navigationDirection,
+        setNavigationDirection,
+        navigationId,
+        setNavigationId,
       }}
     >
       {children}
