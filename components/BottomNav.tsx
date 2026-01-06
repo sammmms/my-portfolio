@@ -108,7 +108,7 @@ export default function BottomNav() {
                   initial={{ opacity: 0, scale: 0.9, y: 10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                  className="absolute bottom-full right-0 mb-4 flex flex-col gap-2 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-2xl p-2 shadow-xl min-w-[3rem] items-center"
+                  className="absolute bottom-full right-0 mb-4 flex flex-col gap-2 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-2xl p-2 shadow-xl min-w-12 items-center"
                 >
                   {socialItems.map((item) => {
                     const Icon = item.icon;

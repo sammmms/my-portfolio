@@ -9,7 +9,7 @@ interface MainContentProps {
 
 export default function MainContent({ project }: MainContentProps) {
   return (
-    <section className="flex-1 sticky top-10 self-start flex flex-col items-center justify-center min-h-[50vh] lg:min-h-full p-8 lg:p-12 rounded-3xl mt-6 lg:mt-0 lg:ml-6 mb-20 transition-all duration-500 overflow-hidden">
+    <section className="flex-1 sticky top-10 self-start flex flex-col items-center justify-center min-h-[50vh] lg:min-h-full p-8 lg:p-12 rounded-3xl mt-6 lg:mt-0 lg:ml-6 mb-20 transition-all duration-500">
       <AnimatePresence mode="wait">
         <motion.div
           key={project.id}
