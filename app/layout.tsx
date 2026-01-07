@@ -75,6 +75,10 @@ export const metadata: Metadata = {
 
 import StarBackground from "@/components/StarBackground";
 
+import Footer from "@/components/Footer";
+
+// ... existing imports ...
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -88,8 +92,9 @@ export default function RootLayout({
         <Providers>
           <StarBackground />
           <Cursor />
-          <main className="max-w-5xl mx-auto px-6 pt-10 pb-24 lg:pb-10 relative min-h-screen flex flex-col">
+          <main className="max-w-5xl mx-auto px-6 pt-24 md:pt-10 pb-10 md:pb-24 relative min-h-screen flex flex-col">
             {children}
+            <Footer />
           </main>
           <BottomNav />
         </Providers>

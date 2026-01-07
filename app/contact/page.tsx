@@ -4,9 +4,32 @@ import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { Download, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
+import { useTheme } from "next-themes";
+import { useCursor } from "@/context/CursorContext";
+
+import { profile } from "@/data/profile";
+// ... imports
 
 export default function ContactPage() {
   useScrollNavigation({ prevPath: "/experience" });
+  const { theme, setTheme } = useTheme();
+  const { setVariant, setNextTheme } = useCursor();
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    setNextTheme(newTheme === "dark" ? "light" : "dark");
+  };
+
+  const handleMouseEnter = () => {
+    setVariant("theme-switch");
+    setNextTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const handleMouseLeave = () => {
+    setVariant("default");
+    setNextTheme(null);
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -38,17 +61,17 @@ export default function ContactPage() {
           className="flex flex-col gap-6 items-center lg:items-start"
         >
           <a
-            href="mailto:samuelonasis.work@gmail.com"
+            href={`mailto:${profile.email}`}
             className="group flex items-center gap-3 text-xl lg:text-2xl font-medium text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
           >
             <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
-            samuelonasis.work@gmail.com
+            {profile.email}
           </a>
         </motion.div>
 
         <motion.div variants={fadeInUp} className="pt-4">
           <Button
-            href="/documents/cv_dec2025.pdf"
+            href={profile.resumeUrl}
             target="_blank"
             size="lg"
             className="px-8" // Add specific padding override if needed, but 'lg' handles basic
@@ -59,7 +82,6 @@ export default function ContactPage() {
         </motion.div>
       </motion.div>
 
-      {/* Right Column: Image Placeholder */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9, x: 20 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -67,14 +89,19 @@ export default function ContactPage() {
         className="flex-1 flex items-center justify-center"
       >
         <motion.div
-          whileHover={{ scale: 1.05, rotate: 2 }}
+          whileHover={{ scale: 1.05, rotate: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
-          className="relative w-64 h-64 lg:w-96 lg:h-96 rounded-full shadow-2xl shadow-neutral-200 dark:shadow-neutral-900 overflow-hidden shrink-0 border-4 border-white dark:border-neutral-800"
+          className="relative w-64 h-64 lg:w-96 lg:h-96 rounded-full shadow-2xl shadow-neutral-200 dark:shadow-neutral-900 overflow-hidden shrink-0 border-4 border-white dark:border-neutral-800 cursor-none"
+          onClick={toggleTheme}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          role="button"
+          tabIndex={0}
         >
           <img
-            src="/assets/logo.jpg"
+            src={profile.images.logo}
             alt="Logo"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover pointer-events-none"
           />
         </motion.div>
       </motion.div>

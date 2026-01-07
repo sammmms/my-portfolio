@@ -7,7 +7,38 @@ interface MainContentProps {
   project: Project;
 }
 
-export default function MainContent({ project }: MainContentProps) {
+export default function MainContent({
+  project,
+  isMobileView = false,
+}: MainContentProps & { isMobileView?: boolean }) {
+  if (isMobileView) {
+    return (
+      <div className="w-full h-64 sm:h-80 md:h-96 relative overflow-hidden rounded-2xl">
+        {project.src ? (
+          <img
+            src={project.src}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-neutral-100 dark:bg-neutral-800">
+            {project.avatar_src ? (
+              <img
+                src={project.avatar_src}
+                alt={project.title}
+                className="w-24 h-24 object-cover rounded-full"
+              />
+            ) : (
+              <span className="text-4xl capitalize">
+                {project.title.charAt(0)}
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <section className="flex-1 sticky top-10 self-start flex flex-col items-center justify-center min-h-[50vh] lg:min-h-full p-8 lg:p-12 rounded-3xl mt-6 lg:mt-0 lg:ml-6 mb-20 transition-all duration-500">
       <AnimatePresence mode="wait">

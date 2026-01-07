@@ -23,7 +23,9 @@ export default function ProjectsPage() {
         selectedProjectId={selectedProjectId}
         onProjectHover={setSelectedProjectId}
       />
-      <MainContent project={selectedProject} />
+      <div className="hidden lg:block lg:flex-1 lg:sticky lg:top-10 lg:self-start lg:h-full">
+        <MainContent project={selectedProject} />
+      </div>
     </div>
   );
 }

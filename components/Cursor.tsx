@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -38,6 +38,36 @@ export default function Cursor() {
     };
   }, [cursorX, cursorY]);
 
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Check if the element or its parents are clickable
+      const isClickable =
+        target.tagName.toLowerCase() === "a" ||
+        target.tagName.toLowerCase() === "button" ||
+        target.closest("a") ||
+        target.closest("button") ||
+        target.closest('[role="button"]') ||
+        target.closest('[role="link"]');
+
+      setIsHovering(!!isClickable);
+    };
+
+    const handleMouseOut = () => {
+      setIsHovering(false);
+    };
+
+    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mouseout", handleMouseOut);
+
+    return () => {
+      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, []);
+
   return (
     <motion.div
       className="fixed top-0 left-0 pointer-events-none z-9999 flex items-center justify-center mix-blend-difference"
@@ -51,8 +81,18 @@ export default function Cursor() {
       <motion.div
         className="bg-white rounded-full flex items-center justify-center relative bg-opacity-90"
         animate={{
-          width: variant === "theme-switch" || isNavigating ? 80 : 32,
-          height: variant === "theme-switch" || isNavigating ? 80 : 32,
+          width:
+            variant === "theme-switch" || isNavigating
+              ? 80
+              : isHovering
+              ? 48
+              : 32,
+          height:
+            variant === "theme-switch" || isNavigating
+              ? 80
+              : isHovering
+              ? 48
+              : 32,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >

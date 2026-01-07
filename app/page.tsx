@@ -6,6 +6,8 @@ import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { Button } from "@/components/Button";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
+import { profile } from "@/data/profile";
+import { TypingText } from "@/components/TypingText";
 import { useTheme } from "next-themes";
 import { useCursor } from "@/context/CursorContext";
 import { useEffect, useState } from "react";
@@ -52,7 +54,7 @@ export default function Home() {
           tabIndex={0}
         >
           <img
-            src="/assets/profile.jpg"
+            src={profile.images.headshot}
             alt="Profile"
             className="w-full h-full object-cover rounded-2xl pointer-events-none"
           />
@@ -61,20 +63,23 @@ export default function Home() {
         {/* Profile Info */}
         <div className="space-y-4 max-w-lg">
           <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter">
-            samuel onasis
+            {profile.name.toLowerCase()}
           </h1>
-          <p className="text-lg text-neutral-500 leading-relaxed">
-            fullstack developer. passionate about building beautiful,
-            functional, and user-centric digital experiences.
+          <p className="text-lg text-neutral-500 leading-relaxed max-w-lg">
+            <TypingText
+              text={profile.emphasize}
+              className="font-bold text-black dark:text-white mr-2"
+            />
+            {profile.bio}
           </p>
         </div>
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4 mb-20 items-center justify-end animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+      <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-20 w-full animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
         <Button
           href="/projects"
-          className="px-6 py-2 h-12 text-lg" // Adjusted to match size="lg" roughly or just let size handles it
+          className="px-6 py-2 h-12 text-lg w-full md:w-auto"
           size="lg"
         >
           <span className="flex items-center gap-2">
@@ -84,8 +89,8 @@ export default function Home() {
         </Button>
 
         <Button
-          href="/documents/cv_dec2025.pdf"
-          className="px-6 py-2 h-12 text-lg"
+          href={profile.resumeUrl}
+          className="px-6 py-2 h-12 text-lg w-full md:w-auto"
           size="lg"
         >
           <span className="flex items-center gap-2">
@@ -96,9 +101,11 @@ export default function Home() {
       </div>
 
       {/* Recent Projects Preview */}
-      <div className="w-full max-w-5xl mx-auto px-6 mb-20 text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+      <div className="w-full max-w-5xl mx-auto mb-20 text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold tracking-tight">recent projects</h2>
+          <h2 className="text-2xl font-bold tracking-tighter">
+            recent projects
+          </h2>
           <Link
             href="/projects"
             className="text-sm text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
@@ -140,9 +147,9 @@ export default function Home() {
       </div>
 
       {/* Experience Preview */}
-      <div className="w-full max-w-5xl mx-auto px-6 mb-20 text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+      <div className="w-full max-w-5xl mx-auto mb-20 text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold tracking-tight">experience</h2>
+          <h2 className="text-2xl font-bold tracking-tighter">experience</h2>
           <Link
             href="/experience"
             className="text-sm text-neutral-500 hover:text-black dark:hover:text-white transition-colors"
