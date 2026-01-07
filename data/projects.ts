@@ -2,6 +2,15 @@ import Project from "@/models/project";
 
 export const projects: Project[] = [
   {
+    id: "presentation slide - religion",
+    title: "presentation slide - religion",
+    category: "react",
+    date: "jan 2026",
+    link: "https://slides.wsnsam.my.id/",
+    description: "presentation slide - harmony in diversity",
+    src: "/projects/presentation-slide-religion.png",
+  },
+  {
     id: "nowvest",
     title: "nowvest",
     category: "next.js",
