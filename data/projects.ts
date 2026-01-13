@@ -2,6 +2,16 @@ import Project from "@/models/project";
 
 export const projects: Project[] = [
   {
+    id: "devops-todo",
+    title: "DevOps Todo",
+    category: "Kubernetes, CI/CD, Docker, React, FastAPI",
+    date: "oct 2025",
+    link: "https://todo.wsnsam.my.id/",
+    description:
+      "Cloud-native to-do application built with React and FastAPI, containerized with Docker and deployed on Kubernetes (k3s). Features automated CI/CD via GitHub Actions, zero-downtime rolling updates, ingress with SSL, and horizontal pod autoscaling.",
+    src: "/projects/devops-todo.png",
+  },
+  {
     id: "presentation slide - religion",
     title: "presentation slide - religion",
     category: "react",
@@ -126,16 +136,6 @@ export const projects: Project[] = [
     date: "jan 2024",
     link: "https://github.com/sammmms/e-othello",
     description: "assignment project - command-line based othello game",
-  },
-  {
-    id: "todo",
-    title: "simple to-do app",
-    category: "react, python",
-    date: "oct 2025",
-    link: "https://github.com/sammmms/devops-uts",
-    description:
-      "assignment project - simple to-do app with ci/cd pipeline, and docker",
-    src: "/projects/simple-todo.png",
   },
   {
     id: "wanderway",
