@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://sam-portfolio.com/sitemap.xml", // Placeholder
+    sitemap: "https://wsnsam.my.id/sitemap.xml",
   };
 }
