@@ -18,17 +18,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wsnsam.my.id"),
   title: {
-    default: "Samuel Onasis – Frontend Engineer (React & Next.js)",
+    default: "Samuel Onasis – Frontend Engineer Portfolio",
     template: "%s | Samuel Onasis",
   },
   description:
     "Frontend Engineer specializing in React, Next.js, and modern web technologies. Showcasing real-world projects, systems, and UI-focused solutions.",
   keywords: [
-    "Frontend Engineer Portfolio",
-    "React Developer Portfolio",
-    "Next.js Developer",
-    "Web Developer Indonesia",
-    "UI Engineer",
+    "Samuel Onasis",
+    "Samuel Onasis Portfolio",
+    "Samuel Onasis Frontend Engineer",
+    "Samuel Onasis React Developer",
+    "Samuel Onasis Next.js Developer",
+    "Samuel Onasis Web Developer",
+    "Samuel Onasis Software Engineer",
+    "Samuel Onasis TypeScript",
+    "Samuel Onasis Tailwind CSS",
+    "Samuel Onasis UI/UX",
   ],
   authors: [{ name: "Samuel Onasis" }],
   creator: "Samuel Onasis",
@@ -100,6 +105,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Samuel Onasis",
+        url: "https://wsnsam.my.id",
+        sameAs: [
+          "https://www.linkedin.com/in/samuel-onasis",
+          "https://github.com/sammmms",
+        ],
+        jobTitle: "Frontend Engineer",
+        worksFor: {
+          "@type": "Organization",
+          name: "Bizapps",
+        },
+      }),
+    }}
+  />;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
