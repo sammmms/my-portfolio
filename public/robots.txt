@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wsnsam.my.id/sitemap.xml
