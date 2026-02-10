@@ -2,6 +2,16 @@ import Project from "@/models/project";
 
 export const projects: Project[] = [
   {
+    id: "ecard-bizapps",
+    title: "bizapps e-card",
+    category: "Next.js, TypeScript, Prisma, NextAuth",
+    date: "feb 2026",
+    link: "https://ecard.bizapps.id/",
+    description:
+      "Full-stack SaaS digital greeting card platform for seasonal occasions (CNY, Valentine's). Features include JWT authentication, multi-category template system with 4 animated templates (GoldNShiny, CrimsonBloom, JadeProsperity, ValentineRose), free trial with upgrade path, donation collection (QRIS/e-wallet), public wish submissions, real-time analytics dashboard, fuzzy search filtering, seasonal theming system, and mobile-responsive design. Built with Next.js 15, Prisma ORM, SQLite, NextAuth, Framer Motion, and Tailwind CSS.",
+    src: "/projects/ecard-bizapps.png",
+  },
+  {
     id: "devops-todo",
     title: "DevOps Todo",
     category: "Kubernetes, CI/CD, Docker, React, FastAPI",
