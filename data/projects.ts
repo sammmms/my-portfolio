@@ -2,6 +2,26 @@ import Project from "@/models/project";
 
 export const projects: Project[] = [
   {
+    id: "diet-bersama",
+    title: "diet bersama",
+    category: "Next.js, TypeScript, Supabase, Gemini, Tailwind, PWA",
+    date: "jun 2026",
+    link: "https://diet.wsnsam.my.id/",
+    description:
+      "Mobile-first PWA for a household to diet together. Name-only login, AI calorie estimation via Google Gemini (nutritionist-prompted, DB-first with soft-fail), a shared month calendar with per-day streaks + member avatars, tiered streak achievements, weekly weigh-ins, and a chip/card meal logger with quantity grouping + notes. WhatsApp OTP-verified reminders (self-hosted Baileys API) and Web Push (VAPID) via cron. Liquid-glass UI with HeroUI + Framer Motion, install prompt, crash/cache-reset recovery, and update banner. Self-hosted on Ubuntu (pm2 + nginx + Let's Encrypt) with zero-downtime CI/CD via GitHub Actions that runs Supabase migrations on every deploy.",
+    src: "/projects/diet-bersama.png",
+  },
+  {
+    id: "personal-whatsapp-api",
+    title: "self-hosted whatsapp api",
+    category: "Node.js, TypeScript, Baileys, Express, PostgreSQL",
+    date: "jun 2026",
+    link: "https://wa.wsnsam.my.id/",
+    description:
+      "Self-hosted WhatsApp messaging API built on the Baileys multi-device protocol — a free, drop-in replacement for paid providers. Exposes an x-api-key protected REST endpoint for sending messages, with a login-gated dashboard (scrypt-hashed auth + signed session cookies) to link/unlink a device via QR or pairing code and manage the session. Sessions persist in PostgreSQL via a custom Baileys auth-state adapter, so it auto-reconnects across restarts and self-heals after logout. Deployed on a DigitalOcean droplet behind nginx + Let's Encrypt, with zero-downtime CI/CD via GitHub Actions (rsync + pm2).",
+    src: "/projects/personal-whatsapp-api.png",
+  },
+  {
     id: "ecard-bizapps",
     title: "bizapps e-card",
     category: "Next.js, TypeScript, Prisma, NextAuth",
