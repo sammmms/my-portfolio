@@ -2,6 +2,16 @@ import Project from "@/models/project";
 
 export const projects: Project[] = [
   {
+    id: "deepfake-defense-deck",
+    title: "thesis defense deck — deepfake hybrid",
+    category: "React, Vite, TypeScript, Tailwind, Framer Motion, PWA",
+    date: "jun 2026",
+    link: "https://skripsi.wsnsam.my.id/",
+    description:
+      "Animated, data-driven presentation deck (24 slides) for an undergraduate thesis defense on comparative deepfake detection (Hybrid XceptionNet–FFT vs single-domain models). A single discriminated-union slide model drives reusable layouts, block primitives, and custom interactive SVG charts built straight from the thesis results. Ships a presenter mode (press F) that opens a synced projector window — current slide, scroll position, and figure lightbox all mirrored across windows via BroadcastChannel — plus keyboard/swipe/wheel navigation, per-slide deep-links, a presenter-notes drawer, and an installable offline PWA. Content and figures are sourced from the thesis repo as a single source of truth. React 19 + Vite 7 + TypeScript + Tailwind v4 + Framer Motion, deployed static on Vercel.",
+    src: "/projects/skripsi-presentation.png",
+  },
+  {
     id: "diet-bersama",
     title: "diet bersama",
     category: "Next.js, TypeScript, Supabase, Gemini, Tailwind, PWA",
