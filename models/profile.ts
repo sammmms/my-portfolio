@@ -5,6 +5,7 @@ export interface Profile {
   bio: string;
   email: string;
   resumeUrl: string;
+  resumePreviewUrl: string;
   images: {
     headshot: string;
     logo: string;

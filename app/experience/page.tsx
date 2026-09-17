@@ -2,15 +2,16 @@
 
 import { experiences } from "@/data/experience";
 import { motion } from "framer-motion";
-import { MapPin, Calendar } from "lucide-react";
+import { MapPin, Calendar, FileCheck2 } from "lucide-react";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import Link from "next/link";
+import RecommendationSection from "@/components/RecommendationSection";
 
 export default function ExperiencePage() {
   useScrollNavigation({ prevPath: "/projects", nextPath: "/contact" });
 
   return (
-    <section className="min-h-full w-full max-w-4xl mx-auto pb-32 lg:pb-32">
+    <section className="min-h-full w-full max-w-4xl mx-auto pb-48 lg:pb-56">
       <div className="mb-12 lg:pl-6">
         <h1 className="text-2xl font-bold tracking-tighter mb-4">experience</h1>
         <p className="text-neutral-500">
@@ -60,6 +61,12 @@ export default function ExperiencePage() {
                       <div className="flex items-center gap-1">
                         <MapPin className="w-3.5 h-3.5" />
                         {exp.location.city}, {exp.location.country}
+                      </div>
+                    )}
+                    {exp.recommendationUrl && (
+                      <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 lg:group-hover:text-neutral-300 lg:dark:group-hover:text-neutral-700">
+                        <FileCheck2 className="w-3.5 h-3.5" />
+                        <span>letter of recommendation attached</span>
                       </div>
                     )}
                   </div>
@@ -139,6 +146,10 @@ export default function ExperiencePage() {
             </motion.div>
           );
         })}
+      </div>
+
+      <div className="mt-20 lg:pl-6">
+        <RecommendationSection />
       </div>
     </section>
   );

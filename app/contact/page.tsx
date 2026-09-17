@@ -71,10 +71,9 @@ export default function ContactPage() {
 
         <motion.div variants={fadeInUp} className="pt-4">
           <Button
-            href={profile.resumeUrl}
-            target="_blank"
+            href={profile.resumePreviewUrl}
             size="lg"
-            className="px-8" // Add specific padding override if needed, but 'lg' handles basic
+            className="px-8"
           >
             <span>resume</span>
             <Download className="w-4 h-4" />

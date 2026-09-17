@@ -28,6 +28,11 @@ export default function BottomNav() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Hide navigation on document preview pages
+  if (pathname?.startsWith("/preview")) {
+    return null;
+  }
+
   const navItems = [
     { name: "home", href: "/" },
     { name: "projects", href: "/projects" },

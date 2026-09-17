@@ -12,11 +12,12 @@ export const experiences: Experience[] = [
       setting: "Hybrid",
     },
     start_date: "Jun 2025",
-    end_date: "Present",
-    duration: "7 mos",
+    end_date: "Sep 2026",
+    duration: "1 yr 4 mos",
     description: ["Laravel Backend Developer", "React Frontend Developer"],
     skills: ["Laravel", "PHP", "React.js", "MySQL"],
     url: "https://bizapps.id",
+    recommendationUrl: "/documents/recommendation_bizapps.pdf",
   },
   {
     title: "Mobile Application Developer",
@@ -110,5 +111,6 @@ export const experiences: Experience[] = [
     ],
     skills: ["Microsoft Excel", "Salary", "Accounting"],
     url: "https://sehatplastikbinjai.blogspot.com/",
+    recommendationUrl: "/documents/recommendation_sehat_plastik.pdf",
   },
 ];

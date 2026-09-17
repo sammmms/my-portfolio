@@ -16,4 +16,5 @@ export interface Experience {
   description: string[];
   skills: string[];
   url?: string;
+  recommendationUrl?: string;
 }

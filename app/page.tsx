@@ -11,6 +11,7 @@ import { TypingText } from "@/components/TypingText";
 import { useTheme } from "next-themes";
 import { useCursor } from "@/context/CursorContext";
 import { useEffect, useState } from "react";
+import RecommendationSection from "@/components/RecommendationSection";
 
 export default function Home() {
   useScrollNavigation({ nextPath: "/projects" });
@@ -89,7 +90,7 @@ export default function Home() {
         </Button>
 
         <Button
-          href={profile.resumeUrl}
+          href={profile.resumePreviewUrl}
           className="px-6 py-2 h-12 text-lg w-full md:w-auto"
           size="lg"
         >
@@ -188,6 +189,11 @@ export default function Home() {
             );
           })}
         </div>
+      </div>
+
+      {/* Recommendation Letters Section */}
+      <div className="w-full max-w-5xl mx-auto mb-20 text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400">
+        <RecommendationSection />
       </div>
     </section>
   );
