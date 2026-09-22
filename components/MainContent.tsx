@@ -2,15 +2,20 @@
 
 import Project from "@/models/project";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@heroui/react";
+import { getProjectLinks } from "@/utils/projectLinks";
 
 interface MainContentProps {
   project: Project;
+  onOpenModal?: (project: Project) => void;
+  isMobileView?: boolean;
 }
 
 export default function MainContent({
   project,
+  onOpenModal,
   isMobileView = false,
-}: MainContentProps & { isMobileView?: boolean }) {
+}: MainContentProps) {
   if (isMobileView) {
     return (
       <div className="w-full h-64 sm:h-80 md:h-96 relative overflow-hidden rounded-2xl">
@@ -39,6 +44,16 @@ export default function MainContent({
     );
   }
 
+  const links = getProjectLinks(project);
+
+  const handleDesktopClick = () => {
+    if (links.length > 1) {
+      onOpenModal?.(project);
+    } else if (links.length === 1) {
+      window.open(links[0].url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <section className="flex-1 sticky top-10 self-start flex flex-col items-center justify-center min-h-[50vh] lg:min-h-full p-8 lg:p-12 rounded-3xl mt-6 lg:mt-0 lg:ml-6 mb-20 transition-all duration-500">
       <AnimatePresence mode="wait">
@@ -51,7 +66,19 @@ export default function MainContent({
           className="flex flex-col items-center justify-center w-full h-full"
         >
           <div
-            className="w-full h-full relative overflow-hidden rounded-3xl shadow-2xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-2"
+            onClick={links.length > 0 ? handleDesktopClick : undefined}
+            role={links.length > 0 ? "button" : undefined}
+            tabIndex={links.length > 0 ? 0 : undefined}
+            onKeyDown={(e) => {
+              if (links.length > 0 && (e.key === "Enter" || e.key === " ")) {
+                e.preventDefault();
+                handleDesktopClick();
+              }
+            }}
+            className={cn(
+              "w-full h-full relative overflow-hidden rounded-3xl shadow-2xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-2 transition-all",
+              links.length > 0 && "cursor-pointer group"
+            )}
             style={{ perspective: "1000px" }}
           >
             {project.src ? (
@@ -59,7 +86,7 @@ export default function MainContent({
                 <img
                   src={project.src}
                   alt={project.title}
-                  className="w-full h-full object-contain rounded-2xl transform hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-contain rounded-2xl transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
             ) : (

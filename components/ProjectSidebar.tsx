@@ -1,24 +1,37 @@
 "use client";
 
 import { MoveRight } from "lucide-react";
-import Link from "next/link";
 import { cn } from "@heroui/react";
 import Project from "@/models/project";
 import { useState } from "react";
 import MainContent from "./MainContent";
+import ProjectLinksModal from "./ProjectLinksModal";
+import { getProjectLinks } from "@/utils/projectLinks";
 
 interface ProjectSidebarProps {
   projects: Project[];
   selectedProjectId: string;
   onProjectHover: (id: string) => void;
+  onOpenModal?: (project: Project) => void;
 }
 
 export default function ProjectSidebar({
   projects,
   selectedProjectId,
   onProjectHover,
+  onOpenModal,
 }: ProjectSidebarProps) {
   const [sortType, setSortType] = useState<"priority" | "date">("priority");
+  const [internalModalProject, setInternalModalProject] =
+    useState<Project | null>(null);
+
+  const handleOpenModal = (project: Project) => {
+    if (onOpenModal) {
+      onOpenModal(project);
+    } else {
+      setInternalModalProject(project);
+    }
+  };
 
   const parseDate = (dateStr: string) => {
     if (dateStr === "unknown") return new Date(0);
@@ -42,7 +55,7 @@ export default function ProjectSidebar({
           <button
             onClick={() => setSortType("priority")}
             className={cn(
-              "ml-2 hover:text-black dark:hover:text-white transition-colors",
+              "ml-2 hover:text-black dark:hover:text-white transition-colors cursor-pointer",
               sortType === "priority"
                 ? "text-black dark:text-white font-medium"
                 : "text-neutral-500"
@@ -54,7 +67,7 @@ export default function ProjectSidebar({
           <button
             onClick={() => setSortType("date")}
             className={cn(
-              "hover:text-black dark:hover:text-white transition-colors",
+              "hover:text-black dark:hover:text-white transition-colors cursor-pointer",
               sortType === "date"
                 ? "text-black dark:text-white font-medium"
                 : "text-neutral-500"
@@ -66,45 +79,45 @@ export default function ProjectSidebar({
       </div>
 
       <div className="flex flex-col gap-1">
-        {sortedProjects.map((project) => (
-          <div
-            key={project.id}
-            className="group relative mb-8 lg:mb-0"
-            onMouseEnter={() => onProjectHover(project.id)}
-          >
-            <Link href={project.link || "#"} className="block" target="_blank">
-              <div className="flex flex-col transition-all">
-                <div
-                  className={cn(
-                    "flex items-center justify-between py-2 lg:py-4 lg:border-b border-neutral-200 dark:border-neutral-800 transition-all duration-300 hover:pl-2",
-                    selectedProjectId === project.id
-                      ? "opacity-100 pl-2"
-                      : "opacity-100 lg:opacity-60 hover:opacity-100" // Always 100 on mobile
-                  )}
-                >
-                  <div className="flex flex-col gap-1">
-                    <div className="flex items-baseline flex-col">
-                      <span
-                        className={cn(
-                          "text-2xl lg:text-xl font-bold lg:font-medium tracking-tighter transition-all",
-                          selectedProjectId === project.id
-                            ? "underline decoration-1 underline-offset-4"
-                            : "group-hover:underline decoration-1 underline-offset-4"
-                        )}
-                      >
-                        {project.title}
-                      </span>
-                      <span className="text-sm text-neutral-500 font-light">
-                        {project.category}
-                      </span>
-                    </div>
+        {sortedProjects.map((project) => {
+          const links = getProjectLinks(project);
+          const hasMultipleLinks = links.length > 1;
+          const singleLink = links.length === 1 ? links[0].url : undefined;
+
+          const innerContent = (
+            <div className="flex flex-col transition-all">
+              <div
+                className={cn(
+                  "flex items-center justify-between py-2 lg:py-4 lg:border-b border-neutral-200 dark:border-neutral-800 transition-all duration-300 hover:pl-2",
+                  selectedProjectId === project.id
+                    ? "opacity-100 pl-2"
+                    : "opacity-100 lg:opacity-60 hover:opacity-100"
+                )}
+              >
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-baseline flex-col">
+                    <span
+                      className={cn(
+                        "text-2xl lg:text-xl font-bold lg:font-medium tracking-tighter transition-all",
+                        selectedProjectId === project.id
+                          ? "underline decoration-1 underline-offset-4"
+                          : "group-hover:underline decoration-1 underline-offset-4"
+                      )}
+                    >
+                      {project.title}
+                    </span>
+                    <span className="text-sm text-neutral-500 font-light">
+                      {project.category}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-4">
-                    {project.date !== "unknown" && (
-                      <span className="text-sm text-neutral-400 font-mono hidden sm:block">
-                        {project.date}
-                      </span>
-                    )}
+                </div>
+                <div className="flex items-center gap-4">
+                  {project.date !== "unknown" && (
+                    <span className="text-sm text-neutral-400 font-mono hidden sm:block">
+                      {project.date}
+                    </span>
+                  )}
+                  {links.length > 0 && (
                     <MoveRight
                       className={cn(
                         "w-4 h-4 transition-all duration-300",
@@ -113,16 +126,65 @@ export default function ProjectSidebar({
                           : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
                       )}
                     />
-                  </div>
-                </div>
-                <div className="block lg:hidden mt-4">
-                  <MainContent project={project} isMobileView={true} />
+                  )}
                 </div>
               </div>
-            </Link>
-          </div>
-        ))}
+              <div className="block lg:hidden mt-4">
+                <MainContent project={project} isMobileView={true} />
+              </div>
+            </div>
+          );
+
+          return (
+            <div
+              key={project.id}
+              className="group relative mb-8 lg:mb-0"
+              onMouseEnter={() => onProjectHover(project.id)}
+            >
+              {hasMultipleLinks ? (
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => handleOpenModal(project)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleOpenModal(project);
+                    }
+                  }}
+                  className="block w-full text-left cursor-pointer focus:outline-none"
+                >
+                  {innerContent}
+                </div>
+              ) : singleLink ? (
+                <a
+                  href={singleLink}
+                  className="block cursor-pointer focus:outline-none"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {innerContent}
+                </a>
+              ) : (
+                <div
+                  onClick={() => onProjectHover(project.id)}
+                  className="block cursor-default"
+                >
+                  {innerContent}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
+
+      {!onOpenModal && (
+        <ProjectLinksModal
+          project={internalModalProject}
+          isOpen={!!internalModalProject}
+          onClose={() => setInternalModalProject(null)}
+        />
+      )}
     </section>
   );
 }

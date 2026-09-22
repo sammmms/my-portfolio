@@ -1,4 +1,5 @@
 import Project from "@/models/project";
+import { Github, Globe } from "lucide-react";
 
 export const projects: Project[] = [
   {
@@ -146,7 +147,10 @@ export const projects: Project[] = [
     title: "sustainify",
     category: "react",
     date: "jun 2024",
-    link: "https://github.com/sammmms/sustainify-frontend",
+    links: [
+      [Github, "https://github.com/sammmms/sustainify-frontend"],
+      [Globe, "https://sustainify-frontend.vercel.app/"],
+    ],
     description:
       "assignment project - website for iot trash bin monitoring system",
     src: "/projects/sustainify.png",
