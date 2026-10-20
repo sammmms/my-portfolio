@@ -57,9 +57,9 @@ export const projects: Project[] = [
     title: "diet bersama",
     category: "Next.js, TypeScript, Supabase, Gemini, Tailwind, PWA",
     date: "jun 2026",
-    link: "https://diet.wsnsam.my.id/",
+    link: "https://diet-bersama.vercel.app/",
     description:
-      "Mobile-first PWA for a household to diet together. Name-only login, AI calorie estimation via Google Gemini (nutritionist-prompted, DB-first with soft-fail), a shared month calendar with per-day streaks + member avatars, tiered streak achievements, weekly weigh-ins, and a chip/card meal logger with quantity grouping + notes. WhatsApp OTP-verified reminders (self-hosted Baileys API) and Web Push (VAPID) via cron. Liquid-glass UI with HeroUI + Framer Motion, install prompt, crash/cache-reset recovery, and update banner. Self-hosted on Ubuntu (pm2 + nginx + Let's Encrypt) with zero-downtime CI/CD via GitHub Actions that runs Supabase migrations on every deploy.",
+      "Mobile-first PWA for a household to diet together. Name-only login, AI calorie estimation via Google Gemini (nutritionist-prompted, DB-first with soft-fail), a shared month calendar with per-day streaks + member avatars, tiered streak achievements, weekly weigh-ins, and a chip/card meal logger with quantity grouping + notes. WhatsApp OTP-verified reminders (self-hosted Baileys API) and Web Push (VAPID) via cron. Liquid-glass UI with HeroUI + Framer Motion, install prompt, crash/cache-reset recovery, and update banner. Fully deployed on Vercel with real-time Supabase database.",
     src: "/projects/diet-bersama.png",
   },
   {
@@ -73,23 +73,23 @@ export const projects: Project[] = [
     src: "/projects/personal-whatsapp-api.png",
   },
   {
-    id: "ecard-bizapps",
-    title: "bizapps e-card",
+    id: "ecard-creator",
+    title: "e-card creator",
     category: "Next.js, TypeScript, Prisma, NextAuth",
     date: "feb 2026",
-    link: "https://ecard.bizapps.id/",
+    link: "https://ecard-creator.vercel.app/",
     description:
-      "Full-stack SaaS digital greeting card platform for seasonal occasions (CNY, Valentine's). Features include JWT authentication, multi-category template system with 4 animated templates (GoldNShiny, CrimsonBloom, JadeProsperity, ValentineRose), free trial with upgrade path, donation collection (QRIS/e-wallet), public wish submissions, real-time analytics dashboard, fuzzy search filtering, seasonal theming system, and mobile-responsive design. Built with Next.js 15, Prisma ORM, SQLite, NextAuth, Framer Motion, and Tailwind CSS.",
-    src: "/projects/ecard-bizapps.png",
+      "Full-stack SaaS digital greeting card platform for seasonal occasions (CNY, Valentine's). Features include JWT authentication, multi-category template system with animated templates (GoldNShiny, CrimsonBloom, JadeProsperity, ValentineRose), free trial with upgrade path, digital angpao & donation collection (QRIS/e-wallet), public wish submissions, real-time analytics dashboard, fuzzy search filtering, seasonal theming system, and mobile-responsive design. Built with Next.js, Prisma ORM, NextAuth, Framer Motion, and Tailwind CSS, deployed on Vercel.",
+    src: "/projects/ecard-creator.png",
   },
   {
     id: "devops-todo",
     title: "DevOps Todo",
-    category: "Kubernetes, CI/CD, Docker, React, FastAPI",
+    category: "React, Docker, Kubernetes, CI/CD",
     date: "oct 2025",
-    link: "https://todo.wsnsam.my.id/",
+    link: "https://devops-todo-sam.vercel.app/",
     description:
-      "Cloud-native to-do application built with React and FastAPI, containerized with Docker and deployed on Kubernetes (k3s). Features automated CI/CD via GitHub Actions, zero-downtime rolling updates, ingress with SSL, and horizontal pod autoscaling.",
+      "Cloud-native to-do application built with React, containerized with Docker and automated with CI/CD pipelines. Features responsive UI, task management with priorities, and production-ready static deployment on Vercel.",
     src: "/projects/devops-todo.png",
   },
   {
