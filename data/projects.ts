@@ -3,6 +3,46 @@ import { Github, Globe } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "kasir-pos",
+    title: "kasir — frosted-glass point-of-sale",
+    category: "TanStack Start, React 19, Tailwind v4, Drizzle, PostgreSQL, PWA",
+    date: "oct 2026",
+    link: "https://github.com/raymondtju/kasir",
+    description:
+      "Modern full-stack Point-of-Sale (POS) designed for high-tempo food & beverage counters. Multi-tenant architecture securely isolates independent stores, customizable catalogs, menu variants, and combos behind scrypt-hashed cookie sessions with Drizzle ORM over PostgreSQL. Features a touch-optimized cashier menu grid with image-first ghost layouts, a real-time kitchen queue dispatcher with a dedicated full-screen customer display board, split-tender checkout (Cash, QRIS proof photo, Vouchers) with cash-drawer denomination breakdown, and instant ESC/POS thermal printing over Web Bluetooth & USB with shareable QR digital receipts. Built with TanStack Start, React 19, Tailwind CSS v4, HeroUI, and installable PWA support.",
+    src: "/projects/kasir.png",
+  },
+  {
+    id: "telurin",
+    title: "telurin — poultry logistics & erp",
+    category: "TanStack Start, React 19, Cloudflare D1, Elysia, Leaflet, Tailwind v4",
+    date: "oct 2026",
+    link: "https://github.com/sammmms/project-eggs",
+    description:
+      "Farm-to-door fresh egg ordering logistics platform and distributor ERP. Delivers a zero-account guest checkout where orders generate unguessable shareable tracking links (TLR-XXXXXX) with an interactive Leaflet map rendering simulated and live courier GPS pings, heading bearings, polyline routes, and dynamic traffic ETAs. The distributor back-office ERP equips warehouse operations with automated tri-unit inventory management (instant conversion across Butir, Papan/Ikat, and Kilogram), daily midnight-WIB omzet reconciliation, an order fulfillment drawer (Konfirmasi → Kemas → Kirim), and delivery fleet tracking. TanStack Start + React 19 + Elysia on Cloudflare Workers + Cloudflare D1 SQLite + Leaflet + Tailwind v4.",
+    src: "/projects/project-eggs.png",
+  },
+  {
+    id: "tovs-fleur",
+    title: "tov’s fleur — boutique florist & smart invoice",
+    category: "Next.js 16, React 19, Supabase, PostgreSQL, Tailwind v4, PWA",
+    date: "oct 2026",
+    link: "https://github.com/sammmms/tovs-fleur",
+    description:
+      "Boutique digital storefront and automated order-to-invoice PWA for Tov's Fleur florist (Medan & Lubuk Pakam), replacing manual Excel workflows. Combines a Milkshake-style mobile bio link with real-time operational status badges and automated WhatsApp custom order generators. Deeply integrates 5 official Google Drive catalog collections with in-app previews. Features a smart sequential A4 invoice generator (TF-YYYYMMDD-01) with itemized bouquet & modification add-ons, batch multi-page PDF printing, and a luxury bouquet greeting card studio with 5 curated print presets (Wisudatulation, Birthday, Romance, Emerald, Linen) formatted for standard 10x7cm cards. Next.js 16 + React 19 + Tailwind v4 + Supabase PostgreSQL Realtime.",
+    src: "/projects/tovs-fleur.png",
+  },
+  {
+    id: "sendokecil-app",
+    title: "sendokecil — artisanal dessert erp & hpp",
+    category: "Next.js 16, React 19, Tailwind v4, ESC/POS Thermal, Supabase",
+    date: "oct 2026",
+    link: "https://github.com/sammmms/sendokecil-app",
+    description:
+      "End-to-end dessert order fulfillment, costing, and distribution management platform for SENDOKecil. Replaces manual order taking with an interactive customer storefront featuring custom greeting card messages and automatic BCA transfer / QRIS payment reconciliation. Equips owners with live granular HPP (Cost of Goods Sold) analytics—tracking raw ingredients, cup packaging, and operational overhead down to the per-cup margin. Automates dispatch through smart batch delivery route clustering by destination area, and includes instant 58mm/80mm ESC/POS thermal receipt printing alongside cup packaging address stickers. Next.js 16 + React 19 + Tailwind v4 + Lucide + Canvas Confetti.",
+    src: "/projects/sendokecil.png",
+  },
+  {
     id: "deepfake-defense-deck",
     title: "thesis defense deck — deepfake hybrid",
     category: "React, Vite, TypeScript, Tailwind, Framer Motion, PWA",
