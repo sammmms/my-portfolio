@@ -8,6 +8,10 @@ export const projects: Project[] = [
     category: "TanStack Start, React 19, Tailwind v4, Drizzle, PostgreSQL, PWA",
     date: "oct 2026",
     link: "https://kasir-bazaar.vercel.app",
+    links: [
+      [Globe, "https://kasir-bazaar.vercel.app"],
+      [Github, "https://github.com/raymondtju/kasir"],
+    ],
     description:
       "Modern full-stack Point-of-Sale (POS) designed for high-tempo food & beverage counters. Multi-tenant architecture securely isolates independent stores, customizable catalogs, menu variants, and combos behind scrypt-hashed cookie sessions with Drizzle ORM over PostgreSQL. Features a touch-optimized cashier menu grid with image-first ghost layouts, a real-time kitchen queue dispatcher with a dedicated full-screen customer display board, split-tender checkout (Cash, QRIS proof photo, Vouchers) with cash-drawer denomination breakdown, and instant ESC/POS thermal printing over Web Bluetooth & USB with shareable QR digital receipts. Built with TanStack Start, React 19, Tailwind CSS v4, HeroUI, and installable PWA support.",
     src: "/projects/kasir.png",
@@ -28,6 +32,10 @@ export const projects: Project[] = [
     category: "Next.js 16, React 19, Supabase, PostgreSQL, Tailwind v4, PWA",
     date: "oct 2026",
     link: "https://tovs-fleur.vercel.app",
+    links: [
+      [Globe, "https://tovs-fleur.vercel.app"],
+      [Github, "https://github.com/sammmms/tovs-fleur"],
+    ],
     description:
       "Boutique digital storefront and automated order-to-invoice PWA for Tov's Fleur florist (Medan & Lubuk Pakam), replacing manual Excel workflows. Combines a Milkshake-style mobile bio link with real-time operational status badges and automated WhatsApp custom order generators. Deeply integrates 5 official Google Drive catalog collections with in-app previews. Features a smart sequential A4 invoice generator (TF-YYYYMMDD-01) with itemized bouquet & modification add-ons, batch multi-page PDF printing, and a luxury bouquet greeting card studio with 5 curated print presets (Wisudatulation, Birthday, Romance, Emerald, Linen) formatted for standard 10x7cm cards. Next.js 16 + React 19 + Tailwind v4 + Supabase PostgreSQL Realtime.",
     src: "/projects/tovs-fleur.png",
@@ -38,6 +46,10 @@ export const projects: Project[] = [
     category: "Next.js 16, React 19, Tailwind v4, ESC/POS Thermal, Supabase",
     date: "oct 2026",
     link: "https://sendokecil.store",
+    links: [
+      [Globe, "https://sendokecil.store"],
+      [Github, "https://github.com/sammmms/sendokecil-app"],
+    ],
     description:
       "End-to-end dessert order fulfillment, costing, and distribution management platform for SENDOKecil. Replaces manual order taking with an interactive customer storefront featuring custom greeting card messages and automatic BCA transfer / QRIS payment reconciliation. Equips owners with live granular HPP (Cost of Goods Sold) analytics—tracking raw ingredients, cup packaging, and operational overhead down to the per-cup margin. Automates dispatch through smart batch delivery route clustering by destination area, and includes instant 58mm/80mm ESC/POS thermal receipt printing alongside cup packaging address stickers. Next.js 16 + React 19 + Tailwind v4 + Lucide + Canvas Confetti.",
     src: "/projects/sendokecil.png",
@@ -48,6 +60,10 @@ export const projects: Project[] = [
     category: "React, Vite, TypeScript, Tailwind, Framer Motion, PWA",
     date: "jun 2026",
     link: "https://skripsi.wsnsam.my.id/",
+    links: [
+      [Globe, "https://skripsi.wsnsam.my.id/"],
+      [Github, "https://github.com/sammmms/skripsi-presentation"],
+    ],
     description:
       "Animated, data-driven presentation deck (24 slides) for an undergraduate thesis defense on comparative deepfake detection (Hybrid XceptionNet–FFT vs single-domain models). A single discriminated-union slide model drives reusable layouts, block primitives, and custom interactive SVG charts built straight from the thesis results. Ships a presenter mode (press F) that opens a synced projector window — current slide, scroll position, and figure lightbox all mirrored across windows via BroadcastChannel — plus keyboard/swipe/wheel navigation, per-slide deep-links, a presenter-notes drawer, and an installable offline PWA. Content and figures are sourced from the thesis repo as a single source of truth. React 19 + Vite 7 + TypeScript + Tailwind v4 + Framer Motion, deployed static on Vercel.",
     src: "/projects/skripsi-presentation.png",
@@ -58,6 +74,10 @@ export const projects: Project[] = [
     category: "Next.js, TypeScript, Supabase, Gemini, Tailwind, PWA",
     date: "jun 2026",
     link: "https://diet-bersama.vercel.app/",
+    links: [
+      [Globe, "https://diet-bersama.vercel.app/"],
+      [Github, "https://github.com/sammmms/diet-tracker-app"],
+    ],
     description:
       "Mobile-first PWA for a household to diet together. Name-only login, AI calorie estimation via Google Gemini (nutritionist-prompted, DB-first with soft-fail), a shared month calendar with per-day streaks + member avatars, tiered streak achievements, weekly weigh-ins, and a chip/card meal logger with quantity grouping + notes. WhatsApp OTP-verified reminders (self-hosted Baileys API) and Web Push (VAPID) via cron. Liquid-glass UI with HeroUI + Framer Motion, install prompt, crash/cache-reset recovery, and update banner. Fully deployed on Vercel with real-time Supabase database.",
     src: "/projects/diet-bersama.png",
@@ -68,6 +88,10 @@ export const projects: Project[] = [
     category: "Node.js, TypeScript, Baileys, Express, PostgreSQL",
     date: "jun 2026",
     link: "https://wa.wsnsam.my.id/",
+    links: [
+      [Globe, "https://wa.wsnsam.my.id/"],
+      [Github, "https://github.com/sammmms/personal-whatsapp-api"],
+    ],
     description:
       "Self-hosted WhatsApp messaging API built on the Baileys multi-device protocol — a free, drop-in replacement for paid providers. Exposes an x-api-key protected REST endpoint for sending messages, with a login-gated dashboard (scrypt-hashed auth + signed session cookies) to link/unlink a device via QR or pairing code and manage the session. Sessions persist in PostgreSQL via a custom Baileys auth-state adapter, so it auto-reconnects across restarts and self-heals after logout. Deployed on a DigitalOcean droplet behind nginx + Let's Encrypt, with zero-downtime CI/CD via GitHub Actions (rsync + pm2).",
     src: "/projects/personal-whatsapp-api.png",
@@ -78,6 +102,10 @@ export const projects: Project[] = [
     category: "Next.js, TypeScript, Prisma, NextAuth",
     date: "feb 2026",
     link: "https://ecard-creator.vercel.app/",
+    links: [
+      [Globe, "https://ecard-creator.vercel.app/"],
+      [Github, "https://github.com/sammmms/ecard-creator"],
+    ],
     description:
       "Full-stack SaaS digital greeting card platform for seasonal occasions (CNY, Valentine's). Features include JWT authentication, multi-category template system with animated templates (GoldNShiny, CrimsonBloom, JadeProsperity, ValentineRose), free trial with upgrade path, digital angpao & donation collection (QRIS/e-wallet), public wish submissions, real-time analytics dashboard, fuzzy search filtering, seasonal theming system, and mobile-responsive design. Built with Next.js, Prisma ORM, NextAuth, Framer Motion, and Tailwind CSS, deployed on Vercel.",
     src: "/projects/ecard-creator.png",
@@ -88,6 +116,10 @@ export const projects: Project[] = [
     category: "React, Docker, Kubernetes, CI/CD",
     date: "oct 2025",
     link: "https://devops-todo-sam.vercel.app/",
+    links: [
+      [Globe, "https://devops-todo-sam.vercel.app/"],
+      [Github, "https://github.com/sammmms/devops-uts"],
+    ],
     description:
       "Cloud-native to-do application built with React, containerized with Docker and automated with CI/CD pipelines. Features responsive UI, task management with priorities, and production-ready static deployment on Vercel.",
     src: "/projects/devops-todo.png",
@@ -98,6 +130,10 @@ export const projects: Project[] = [
     category: "react",
     date: "jan 2026",
     link: "https://slides.wsnsam.my.id/",
+    links: [
+      [Globe, "https://slides.wsnsam.my.id/"],
+      [Github, "https://github.com/sammmms/agama-presentation"],
+    ],
     description: "presentation slide - harmony in diversity",
     src: "/projects/presentation-slide-religion.png",
   },
@@ -116,6 +152,10 @@ export const projects: Project[] = [
     category: "flutter",
     date: "sep 2025",
     link: "http://rsurp.netlify.app/",
+    links: [
+      [Globe, "http://rsurp.netlify.app/"],
+      [Github, "https://github.com/sammmms/flutter-royal-prima"],
+    ],
     description: "royal prima hospital task management app",
     src: "/projects/rsurp.png",
   },
@@ -151,6 +191,10 @@ export const projects: Project[] = [
     category: "nuxt",
     date: "dec 2023",
     link: "https://mpcclub.netlify.app/",
+    links: [
+      [Globe, "https://mpcclub.netlify.app/"],
+      [Github, "https://github.com/sammmms/mpcclub"],
+    ],
     src: "/projects/mpc-club.png",
     description:
       "mikroskil programming club website to manage member and event",
