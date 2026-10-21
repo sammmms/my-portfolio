@@ -1,5 +1,5 @@
 import Project from "@/models/project";
-import { Github, Globe } from "lucide-react";
+import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
@@ -165,6 +165,10 @@ export const projects: Project[] = [
     category: "kotlin, jetpack compose",
     date: "dec 2024",
     link: "https://www.linkedin.com/posts/samuel-onasis_lifeatbangkit-bangkit24h2-bepchallenge-activity-7275216714416435200-wecH",
+    links: [
+      [Linkedin, "https://www.linkedin.com/posts/samuel-onasis_lifeatbangkit-bangkit24h2-bepchallenge-activity-7275216714416435200-wecH"],
+      [Github, "https://github.com/sammmms/c242-bisaabsen"],
+    ],
     description: "frontend hris mobile app for pt. amanah karya indonesia",
     src: "/projects/bisa-absen.png",
   },
@@ -174,6 +178,10 @@ export const projects: Project[] = [
     category: "flutter, socket.io",
     date: "jul 2024",
     link: "https://play.google.com/store/apps/details?id=com.eocout.eocout_flutter&pli=1",
+    links: [
+      [Play, "https://play.google.com/store/apps/details?id=com.eocout.eocout_flutter&pli=1"],
+      [Github, "https://github.com/sammmms/eocout_flutter"],
+    ],
     description: "event organizer - customer third party mobile app",
     src: "/projects/eocout.jpg",
   },
