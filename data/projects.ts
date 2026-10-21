@@ -113,7 +113,7 @@ export const projects: Project[] = [
   {
     id: "devops-todo",
     title: "DevOps Todo",
-    category: "React, Docker, Kubernetes, CI/CD",
+    category: "React 19, TanStack Router, Tailwind v4, FastAPI, Docker, K8s, CI/CD",
     date: "oct 2025",
     link: "https://devops-todo-sam.vercel.app/",
     links: [
@@ -121,7 +121,7 @@ export const projects: Project[] = [
       [Github, "https://github.com/sammmms/devops-uts"],
     ],
     description:
-      "Cloud-native to-do application built with React, containerized with Docker and automated with CI/CD pipelines. Features responsive UI, task management with priorities, and production-ready static deployment on Vercel.",
+      "Cloud-native to-do application built with React 19, TanStack Router, TanStack Query, Radix UI, and FastAPI, containerized with Docker and deployed on Kubernetes (k3s). Features interactive task & category management, real-time analytics dashboard, JWT authentication, automated CI/CD via GitHub Actions, and production-ready deployment on Vercel.",
     src: "/projects/devops-todo.png",
   },
   {
