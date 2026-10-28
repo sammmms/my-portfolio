@@ -7,9 +7,9 @@ export const projects: Project[] = [
     title: "kasir — frosted-glass point-of-sale",
     category: "TanStack Start, React 19, Tailwind v4, Drizzle, PostgreSQL, PWA",
     date: "oct 2026",
-    link: "https://kasir-bazaar.vercel.app",
+    link: "https://kasir.wsnsam.my.id",
     links: [
-      [Globe, "https://kasir-bazaar.vercel.app"],
+      [Globe, "https://kasir.wsnsam.my.id"],
       [Github, "https://github.com/raymondtju/kasir"],
     ],
     description:
@@ -115,9 +115,9 @@ export const projects: Project[] = [
     title: "DevOps Todo",
     category: "React 19, TanStack Router, Tailwind v4, FastAPI, Docker, K8s, CI/CD",
     date: "oct 2025",
-    link: "https://devops-todo-sam.vercel.app/",
+    link: "https://todo.wsnsam.my.id/",
     links: [
-      [Globe, "https://devops-todo-sam.vercel.app/"],
+      [Globe, "https://todo.wsnsam.my.id/"],
       [Github, "https://github.com/sammmms/devops-uts"],
     ],
     description:
