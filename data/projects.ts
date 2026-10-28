@@ -73,9 +73,9 @@ export const projects: Project[] = [
     title: "diet bersama",
     category: "Next.js, TypeScript, Supabase, Gemini, Tailwind, PWA",
     date: "jun 2026",
-    link: "https://diet-bersama.vercel.app/",
+    link: "https://diet.wsnsam.my.id/",
     links: [
-      [Globe, "https://diet-bersama.vercel.app/"],
+      [Globe, "https://diet.wsnsam.my.id/"],
       [Github, "https://github.com/sammmms/diet-tracker-app"],
     ],
     description:
