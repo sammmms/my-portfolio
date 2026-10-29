@@ -3,6 +3,19 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "backdrop-player",
+    title: "backdrop player — macos animated wallpaper & workshop hub",
+    category: "Swift 6, AppKit, SwiftUI, AVFoundation, Steam Workshop API, macOS Native",
+    date: "oct 2026",
+    link: "https://github.com/sammmms/backdrop-player",
+    links: [
+      [Github, "https://github.com/sammmms/backdrop-player"],
+    ],
+    description:
+      "Native macOS live wallpaper engine and dynamic Steam Workshop / Wallpaper Engine client built in Swift 6 and SwiftUI. Completely decouples the macOS Lock Screen from the Desktop wallpaper via isolated macOS Index.plist CoreGraphics layers—enabling an independent static lock screen while running 60fps hardware-accelerated video loops on the desktop at kCGDesktopWindowLevel. Features an in-app Workshop Hub that dynamically consumes and renders live Steam Community and Wallpaper Engine backend APIs, streaming real-time catalog results, CDN preview thumbnails, and subscriber metrics without manual link copying. Built with distributed notification IPC, zero-CPU idle suspension on screen lock, multi-monitor display synchronization, and 1-click apply for Desktop, Lock Screen, or Both.",
+    src: "/projects/backdrop-player.png",
+  },
+  {
     id: "kasir-pos",
     title: "kasir — frosted-glass point-of-sale",
     category: "TanStack Start, React 19, Tailwind v4, Drizzle, PostgreSQL, PWA",
