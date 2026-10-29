@@ -3,6 +3,19 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "orbit",
+    title: "orbit — macos radial hud & glassmorphic clipboard hub",
+    category: "Swift 6, SwiftUI, AppKit, CoreGraphics, Carbon API, macOS Native",
+    date: "oct 2026",
+    link: "https://github.com/sammmms/orbit",
+    links: [
+      [Github, "https://github.com/sammmms/orbit"],
+    ],
+    description:
+      "Blazing-fast native radial menu (pie menu) and glassmorphic clipboard manager for macOS written in pure Swift 6 and SwiftUI. Leverages Fitts’s Law with equidistant circular slice geometry and dynamic spring physics to enable subconscious muscle-memory navigation for application launching, terminal workflows, OCR screen text extraction via Apple Vision, media controls, and color sampling. Features a floating frosted-glass Clipboard Manager HUD powered by a bulletproof CoreGraphics session event-tap paste engine (NX_DEVICELCMDKEYMASK synthesis) with active external application tracking, live fuzzy search, and 1-9 instant numeric paste shortcuts. Engineered with global Carbon HotKey registration (⌥ + Space) to bypass terminal secure input suppression, low-level CGEventTap for middle-mouse hold-and-flick gestures, distributed notification IPC, zero external dependencies, <25MB RAM footprint, and <5ms trigger latency.",
+    src: "/projects/orbit.png",
+  },
+  {
     id: "backdrop-player",
     title: "backdrop player — macos animated wallpaper & workshop hub",
     category: "Swift 6, AppKit, SwiftUI, AVFoundation, Steam Workshop API, macOS Native",
