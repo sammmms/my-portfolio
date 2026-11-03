@@ -3,6 +3,19 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "jukebox",
+    title: "party jukebox — collaborative real-time music queue & karaoke hub",
+    category: "Node.js, Express, Server-Sent Events, WebSocket, SortableJS, LRCLib API, YouTube Music API, Tailwind CSS",
+    date: "nov 2026",
+    link: "https://github.com/sammmms/jukebox",
+    links: [
+      [Github, "https://github.com/sammmms/jukebox"],
+    ],
+    description:
+      "Zero-friction social jukebox and collaborative party music hub powered by YouTube Music and local Wi-Fi. Designed so party guests simply scan an in-terminal or web QR code to search, request, upvote, and reorder songs from their smartphones without app installations or account sign-ups. Built with dual-engine real-time state synchronization via Server-Sent Events (SSE) and persistent WebSocket telemetry, syncing physical host volume control, upvote-weighted reordering via SortableJS touch drag-and-drop, and party activity audit feeds. Features real-time karaoke synchronization streaming syllable/line-accurate synced LRC lyrics from LRCLib with auto-scrolling glow highlights, previous song play history, granular Country (ID/US/KR/JP) & Genre music filters, one-tap party mood recommendation chips, YouTube Autoplay Up Next queue visibility, and a background watchdog detecting and bypassing YouTube's COPPA 'Made for Kids' playback suppression.",
+    src: "/projects/jukebox.png",
+  },
+  {
     id: "orbit",
     title: "orbit — macos radial hud & glassmorphic clipboard hub",
     category: "Swift 6, SwiftUI, AppKit, CoreGraphics, Carbon API, macOS Native",
