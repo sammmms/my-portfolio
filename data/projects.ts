@@ -3,6 +3,19 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "genshin-checkin",
+    title: "genshin checkin — cross-platform hoyolab daily claim hub & scheduler",
+    category: "Python 3, REST API, SQLite, Playwright, macOS launchd, Windows Task Scheduler, Linux cron",
+    date: "nov 2026",
+    link: "https://github.com/sammmms/genshin-checkin",
+    links: [
+      [Github, "https://github.com/sammmms/genshin-checkin"],
+    ],
+    description:
+      "Zero-dependency, cross-platform interactive CLI dashboard and daily reward automation assistant for Honkai: Star Rail and Genshin Impact (plus Zenless Zone Zero). Built around a frictionless 'let you check in easily' UX philosophy that eliminates manual token hunting and browser DevTools inspection. Features an instant local browser session auto-importer extracting live ltoken_v2 credentials from Zen Browser, Floorp, and Firefox SQLite profiles in <0.1s, paired with a visual Playwright fallback window for OAuth (Google/Apple) logins. Engineered with an intelligent live status hub displaying real-time monthly streak tallies, exact catalog reward items, and token validity, coupled with an auto-healing session refresher. Includes a 1-click background scheduler manager automatically provisioning native OS-level daily timers—macOS launchd (with automatic catch-up on laptop lid wake), Windows Task Scheduler (schtasks), and Linux crontab.",
+    src: "/projects/genshin-checkin.png",
+  },
+  {
     id: "jukebox",
     title: "party jukebox — collaborative real-time music queue & karaoke hub",
     category: "Node.js, Express, Server-Sent Events, WebSocket, SortableJS, LRCLib API, YouTube Music API, Tailwind CSS",
