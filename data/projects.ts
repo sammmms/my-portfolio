@@ -18,14 +18,15 @@ export const projects: Project[] = [
   {
     id: "jukebox",
     title: "party jukebox — collaborative real-time music queue & karaoke hub",
-    category: "Node.js, Express, Server-Sent Events, WebSocket, SortableJS, LRCLib API, YouTube Music API, Tailwind CSS",
+    category: "Node.js, Express, Server-Sent Events, YouTube IFrame API, Vercel, Tailwind CSS, Lucide Icons",
     date: "nov 2026",
-    link: "https://github.com/sammmms/jukebox",
+    link: "https://dj.wsnsam.my.id",
     links: [
       [Github, "https://github.com/sammmms/jukebox"],
+      [Globe, "https://dj.wsnsam.my.id"],
     ],
     description:
-      "Zero-friction social jukebox and collaborative party music hub powered by YouTube Music and local Wi-Fi. Designed so party guests simply scan an in-terminal or web QR code to search, request, upvote, and reorder songs from their smartphones without app installations. Features dynamic guest DJ profiles with mandatory first-time onboarding, deterministic 9-color DJ identity palettes, dual-engine real-time state synchronization via Server-Sent Events (SSE) and persistent WebSocket telemetry, syncing physical host volume control, upvote-weighted reordering via SortableJS touch drag-and-drop, and party activity feeds. Includes real-time karaoke synchronization streaming syllable/line-accurate synced LRC lyrics from LRCLib with auto-scrolling glow highlights, previous song play history, granular Country (Mandarin/C-Pop, Taiwan, ID, US, KR, JP) & Genre filters with custom pill dropdowns, one-tap Mandopop & party mood recommendation chips, YouTube Autoplay Up Next queue visibility, responsive Desktop/Mobile layout switcher with system theme auto-matching, interactive changelog modal (v2.2.0), and a background watchdog detecting and bypassing YouTube's COPPA 'Made for Kids' playback suppression.",
+      "Zero-friction social jukebox and collaborative party music hub powered by YouTube Music, Lucide Icons, and Vercel cloud hosting. Designed so party guests simply scan a dynamic in-terminal or web QR code to search, request, upvote, and reorder songs from their smartphones without app installations. Features isolated multi-party rooms with instant link and QR sharing (e.g. dj.wsnsam.my.id/?room=...), dynamic guest DJ profiles with mandatory onboarding, deterministic 9-color DJ identity palettes, dual-engine real-time state synchronization via Server-Sent Events (SSE), host speaker seat takeovers, upvote-weighted reordering via SortableJS touch drag-and-drop, and live activity feeds. Includes real-time karaoke synchronization streaming syllable/line-accurate synced LRC lyrics from LRCLib with auto-scrolling highlights and trilingual romanization (Pinyin, Romaji, Romaja), previous song play history, granular Country (Mandarin/C-Pop, Taiwan, ID, US, KR, JP) & Genre filters, responsive Desktop/Mobile layout switcher, system theme auto-matching, and a resilient YouTube Web Player engine deployed on Vercel.",
     src: "/projects/jukebox.png",
   },
   {
