@@ -60,10 +60,77 @@ export default function BottomNav() {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 pointer-events-none md:pointer-events-auto md:inset-auto md:bottom-0 md:left-0 md:right-0 md:border-t md:border-neutral-200 md:bg-white/80 md:dark:bg-black/80 md:dark:border-neutral-800 md:backdrop-blur-md">
-      <div className="h-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between md:px-6 md:py-4">
-        {/* Navigation Links - Mobile: Top Floating Pill, Desktop: standard list */}
-        <nav className="pointer-events-auto fixed top-6 left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:bg-transparent md:border-none md:shadow-none bg-white/80 dark:bg-black/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 shadow-xl rounded-full px-2 py-2 md:p-0 flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar z-50">
+    <>
+      {/* Mobile Top Floating Pill */}
+      <nav className="md:hidden pointer-events-auto fixed top-6 left-1/2 -translate-x-1/2 bg-white/85 dark:bg-black/85 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 shadow-xl rounded-full px-2 py-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar z-50">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "relative px-3.5 py-1.5 rounded-full transition-colors text-xs font-medium",
+                isActive
+                  ? "text-black dark:text-white font-bold bg-neutral-100 dark:bg-neutral-800"
+                  : "text-neutral-500 hover:text-black dark:hover:text-white"
+              )}
+            >
+              <span>{item.name}</span>
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Mobile Bottom-Right FAB for Socials */}
+      <div
+        className="md:hidden pointer-events-auto fixed bottom-6 right-6 z-50"
+        ref={menuRef}
+      >
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 10 }}
+              className="absolute bottom-full right-0 mb-3 flex flex-col gap-2 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-2xl p-2 shadow-xl min-w-12 items-center"
+            >
+              {socialItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 text-neutral-500 transition-all hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded-xl"
+                    aria-label={item.name}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={cn(
+            "w-12 h-12 flex items-center justify-center rounded-full shadow-lg border border-neutral-200 dark:border-neutral-800 backdrop-blur-md transition-all duration-300",
+            isOpen
+              ? "text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 scale-105"
+              : "text-neutral-500 bg-white/90 dark:bg-black/90"
+          )}
+          aria-label="Toggle social menu"
+        >
+          <AtSign className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Desktop Floating Island Dock (Bottom Center) - Modern macOS Style */}
+      <div className="hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto items-center gap-3 px-3.5 py-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-neutral-200/90 dark:border-neutral-800/90 shadow-2xl shadow-black/5 dark:shadow-white/5 transition-all duration-300 hover:shadow-neutral-950/10 dark:hover:shadow-white/10">
+        <nav className="flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -71,131 +138,47 @@ export default function BottomNav() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "relative px-4 py-2 md:px-2 md:py-1 rounded-full md:rounded-none transition-colors",
-                  isActive ? "text-black dark:text-white" : "text-neutral-500"
+                  "relative px-3.5 py-1.5 rounded-full transition-colors text-sm font-medium",
+                  isActive
+                    ? "text-black dark:text-white font-bold"
+                    : "text-neutral-500 hover:text-black dark:hover:text-white"
                 )}
               >
-                <motion.div
-                  className="relative flex flex-col items-center"
-                  initial="initial"
-                  whileHover="hover"
-                >
-                  <motion.span
-                    className={cn(
-                      "text-sm font-medium transition-colors hover:text-black dark:hover:text-white whitespace-nowrap z-10",
-                      isActive && "font-bold text-black dark:text-white" // Bold for active
-                    )}
-                    variants={{
-                      initial: { scale: 1 },
-                      hover: { scale: 1.1 },
-                    }}
-                    animate={isActive ? { scale: 1.2 } : { scale: 1 }} // Scale up active item
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    {item.name}
-                  </motion.span>
-
-                  {/* Hover Underline - Desktop Only */}
-                  {!isActive && (
-                    <motion.span
-                      className="hidden md:block absolute -bottom-1 left-0 right-0 h-px bg-black/50 dark:bg-white/50"
-                      variants={{
-                        initial: { scaleX: 0 },
-                        hover: { scaleX: 1 },
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  )}
-
-                  {/* Active Indicator */}
-                  {isActive && (
-                    <>
-                      {/* Desktop Active Underline */}
-                      <motion.span
-                        layoutId="navbar-underline"
-                        className="hidden md:block absolute -bottom-1 left-0 right-0 h-px bg-black dark:bg-white"
-                        transition={{
-                          type: "spring",
-                          bounce: 0.2,
-                          duration: 0.6,
-                        }}
-                      />
-                    </>
-                  )}
-                </motion.div>
+                {isActive && (
+                  <motion.div
+                    layoutId="desktop-nav-pill"
+                    className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800/90 rounded-full -z-10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+                <span>{item.name}</span>
               </Link>
             );
           })}
         </nav>
 
-        {/* Right: Social Icons - Mobile: Bottom Right FAB, Desktop: Inline */}
-        <div
-          className="pointer-events-auto fixed bottom-6 right-6 md:static"
-          ref={menuRef}
-        >
-          {/* Desktop: Always visible */}
-          <div className="hidden md:flex items-center gap-4">
-            {socialItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-neutral-500 transition-all hover:text-black dark:hover:text-white hover:scale-110"
-                  aria-label={item.name}
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </div>
+        {/* Subtle Vertical Divider */}
+        <div className="h-4 w-px bg-neutral-200 dark:bg-neutral-800" />
 
-          {/* Mobile: Floating Toggle (FAB) */}
-          <div className="md:hidden relative">
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                  className="absolute bottom-full right-0 mb-4 flex flex-col gap-2 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-2xl p-2 shadow-xl min-w-12 items-center"
-                >
-                  {socialItems.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 text-neutral-500 transition-all hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded-xl"
-                        aria-label={item.name}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </a>
-                    );
-                  })}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "w-12 h-12 flex items-center justify-center rounded-full shadow-lg border border-neutral-200 dark:border-neutral-800 backdrop-blur-md transition-all duration-300",
-                isOpen
-                  ? "text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 scale-110"
-                  : "text-neutral-500 bg-white/90 dark:bg-black/90"
-              )}
-              aria-label="Toggle social menu"
-            >
-              <AtSign className="w-5 h-5" />
-            </button>
-          </div>
+        {/* Social Icons Inline */}
+        <div className="flex items-center gap-1">
+          {socialItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 text-neutral-500 transition-all hover:text-black dark:hover:text-white hover:scale-110 rounded-full"
+                aria-label={item.name}
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </>
   );
 }

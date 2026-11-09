@@ -1,12 +1,17 @@
 "use client";
 
-import { MoveRight } from "lucide-react";
+import { MoveRight, Star } from "lucide-react";
 import { cn } from "@heroui/react";
 import Project from "@/models/project";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import MainContent from "./MainContent";
 import ProjectLinksModal from "./ProjectLinksModal";
 import { getProjectLinks } from "@/utils/projectLinks";
+import {
+  groupProjectsByYear,
+  parseTechTags,
+  FEATURED_PROJECT_IDS,
+} from "@/utils/projectFilter";
 
 interface ProjectSidebarProps {
   projects: Project[];
@@ -38,26 +43,28 @@ export default function ProjectSidebar({
     return new Date(dateStr);
   };
 
-  const sortedProjects = [...projects].sort((a, b) => {
-    if (sortType === "priority") return 0; // Keep original order
-    return parseDate(b.date).getTime() - parseDate(a.date).getTime(); // Newest first
-  });
+  const sortedProjects = useMemo(() => {
+    return [...projects].sort((a, b) => {
+      if (sortType === "priority") return 0; // Keep original order
+      return parseDate(b.date).getTime() - parseDate(a.date).getTime(); // Newest first
+    });
+  }, [projects, sortType]);
+
+  const yearGroups = useMemo(() => {
+    return groupProjectsByYear(sortedProjects);
+  }, [sortedProjects]);
 
   return (
     <section className="w-full lg:w-[50%] flex flex-col gap-6 pb-24 pr-4">
-      <div className="lg:hidden mb-4">
-        <h1 className="text-2xl font-bold tracking-tighter">my portfolio</h1>
-      </div>
-
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm text-neutral-500">
+        <span className="text-xs text-neutral-500">
           Sort by:
           <button
             onClick={() => setSortType("priority")}
             className={cn(
               "ml-2 hover:text-black dark:hover:text-white transition-colors cursor-pointer",
               sortType === "priority"
-                ? "text-black dark:text-white font-medium"
+                ? "text-black dark:text-white font-semibold"
                 : "text-neutral-500"
             )}
           >
@@ -69,7 +76,7 @@ export default function ProjectSidebar({
             className={cn(
               "hover:text-black dark:hover:text-white transition-colors cursor-pointer",
               sortType === "date"
-                ? "text-black dark:text-white font-medium"
+                ? "text-black dark:text-white font-semibold"
                 : "text-neutral-500"
             )}
           >
@@ -78,104 +85,143 @@ export default function ProjectSidebar({
         </span>
       </div>
 
-      <div className="flex flex-col gap-1">
-        {sortedProjects.map((project) => {
-          const links = getProjectLinks(project);
-          const hasMultipleLinks = links.length > 1;
-          const singleLink = links.length === 1 ? links[0].url : undefined;
+      {/* Year-grouped project list */}
+      <div className="flex flex-col gap-8">
+        {yearGroups.map((group) => (
+          <div key={group.year} className="relative">
+            {/* Year Badge */}
+            <div className="sticky top-0 z-10 bg-white/90 dark:bg-black/90 backdrop-blur-md py-2 mb-3 border-b border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
+                  {group.year}
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-neutral-400">
+                {group.projects.length} {group.projects.length === 1 ? "item" : "items"}
+              </span>
+            </div>
 
-          const innerContent = (
-            <div className="flex flex-col transition-all">
-              <div
-                className={cn(
-                  "flex items-center justify-between py-2 lg:py-4 lg:border-b border-neutral-200 dark:border-neutral-800 transition-all duration-300 hover:pl-2",
-                  selectedProjectId === project.id
-                    ? "opacity-100 pl-2"
-                    : "opacity-100 lg:opacity-60 hover:opacity-100"
-                )}
-              >
-                <div className="flex flex-col gap-1">
-                  <div className="flex items-baseline flex-col">
-                    <span
+            {/* List for this year */}
+            <div className="flex flex-col gap-1 pl-1">
+              {group.projects.map((project) => {
+                const isFeatured = FEATURED_PROJECT_IDS.has(project.id);
+                const links = getProjectLinks(project);
+                const hasMultipleLinks = links.length > 1;
+                const singleLink = links.length === 1 ? links[0].url : undefined;
+                const tags = parseTechTags(project.category).slice(0, 2);
+
+                const innerContent = (
+                  <div className="flex flex-col transition-all">
+                    <div
                       className={cn(
-                        "text-2xl lg:text-xl font-bold lg:font-medium tracking-tighter transition-all",
+                        "flex items-center justify-between py-2.5 lg:py-3.5 lg:border-b border-neutral-200/70 dark:border-neutral-800/70 transition-all duration-300 hover:pl-2",
                         selectedProjectId === project.id
-                          ? "underline decoration-1 underline-offset-4"
-                          : "group-hover:underline decoration-1 underline-offset-4"
+                          ? "opacity-100 pl-2 bg-neutral-50/50 dark:bg-neutral-900/30 rounded-xl"
+                          : "opacity-100 lg:opacity-60 hover:opacity-100"
                       )}
                     >
-                      {project.title}
-                    </span>
-                    <span className="text-sm text-neutral-500 font-light">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  {project.date !== "unknown" && (
-                    <span className="text-sm text-neutral-400 font-mono hidden sm:block">
-                      {project.date}
-                    </span>
-                  )}
-                  {links.length > 0 && (
-                    <MoveRight
-                      className={cn(
-                        "w-4 h-4 transition-all duration-300",
-                        selectedProjectId === project.id
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-                      )}
-                    />
-                  )}
-                </div>
-              </div>
-              <div className="block lg:hidden mt-4">
-                <MainContent project={project} isMobileView={true} />
-              </div>
-            </div>
-          );
+                      <div className="flex flex-col gap-1 pr-2">
+                        <div className="flex items-baseline flex-wrap gap-2">
+                          <span
+                            className={cn(
+                              "text-xl lg:text-lg font-bold lg:font-medium tracking-tight transition-all capitalize",
+                              selectedProjectId === project.id
+                                ? "underline decoration-1 underline-offset-4 text-black dark:text-white font-bold"
+                                : "group-hover:underline decoration-1 underline-offset-4"
+                            )}
+                          >
+                            {project.title}
+                          </span>
 
-          return (
-            <div
-              key={project.id}
-              className="group relative mb-8 lg:mb-0"
-              onMouseEnter={() => onProjectHover(project.id)}
-            >
-              {hasMultipleLinks ? (
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => handleOpenModal(project)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      handleOpenModal(project);
-                    }
-                  }}
-                  className="block w-full text-left cursor-pointer focus:outline-none"
-                >
-                  {innerContent}
-                </div>
-              ) : singleLink ? (
-                <a
-                  href={singleLink}
-                  className="block cursor-pointer focus:outline-none"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {innerContent}
-                </a>
-              ) : (
-                <div
-                  onClick={() => onProjectHover(project.id)}
-                  className="block cursor-default"
-                >
-                  {innerContent}
-                </div>
-              )}
+                          {isFeatured && (
+                            <span className="inline-flex items-center gap-0.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                              <Star className="w-2.5 h-2.5 fill-current" />
+                              featured
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Tech tags preview */}
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-[11px] text-neutral-500 dark:text-neutral-400 font-light"
+                            >
+                              {tag} •
+                            </span>
+                          ))}
+                          <span className="text-[11px] text-neutral-400 font-mono">
+                            {project.date}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 shrink-0">
+                        {links.length > 0 && (
+                          <MoveRight
+                            className={cn(
+                              "w-4 h-4 transition-all duration-300",
+                              selectedProjectId === project.id
+                                ? "opacity-100 translate-x-0"
+                                : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                            )}
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Mobile preview */}
+                    <div className="block lg:hidden mt-4">
+                      <MainContent project={project} isMobileView={true} />
+                    </div>
+                  </div>
+                );
+
+                return (
+                  <div
+                    key={project.id}
+                    className="group relative mb-6 lg:mb-0"
+                    onMouseEnter={() => onProjectHover(project.id)}
+                  >
+                    {hasMultipleLinks ? (
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => handleOpenModal(project)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            handleOpenModal(project);
+                          }
+                        }}
+                        className="block w-full text-left cursor-pointer focus:outline-none"
+                      >
+                        {innerContent}
+                      </div>
+                    ) : singleLink ? (
+                      <a
+                        href={singleLink}
+                        className="block cursor-pointer focus:outline-none"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {innerContent}
+                      </a>
+                    ) : (
+                      <div
+                        onClick={() => onProjectHover(project.id)}
+                        className="block cursor-default"
+                      >
+                        {innerContent}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       {!onOpenModal && (

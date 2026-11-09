@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import { profile } from "@/data/profile";
+import { parseTechTags } from "@/utils/projectFilter";
 import { TypingText } from "@/components/TypingText";
 import { useTheme } from "next-themes";
 import { useCursor } from "@/context/CursorContext";
@@ -135,6 +136,21 @@ export default function Home() {
                 )}
               </div>
               <div className="p-4">
+                <div className="flex items-center gap-1.5 mb-2 flex-wrap">
+                  {parseTechTags(project.category).slice(0, 2).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-medium px-2 py-0.5 rounded bg-neutral-200/60 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {project.date && project.date !== "unknown" && (
+                    <span className="text-[10px] text-neutral-400 font-mono ml-auto">
+                      {project.date}
+                    </span>
+                  )}
+                </div>
                 <h3 className="font-bold text-lg mb-1 capitalize group-hover:underline decoration-1 underline-offset-4">
                   {project.title}
                 </h3>
