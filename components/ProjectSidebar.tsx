@@ -89,15 +89,14 @@ export default function ProjectSidebar({
       <div className="flex flex-col gap-8">
         {yearGroups.map((group) => (
           <div key={group.year} className="relative">
-            {/* Year Badge */}
-            <div className="sticky top-0 z-10 bg-white/90 dark:bg-black/90 backdrop-blur-md py-2 mb-3 border-b border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
-                  {group.year}
-                </span>
-              </div>
+            {/* Year Section Header */}
+            <div className="flex items-center gap-3 pt-6 pb-2 first:pt-0 mb-2">
+              <span className="font-bold text-sm tracking-tight text-black dark:text-white">
+                {group.year}
+              </span>
+              <div className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
               <span className="text-[11px] font-mono text-neutral-400">
-                {group.projects.length} {group.projects.length === 1 ? "item" : "items"}
+                {group.projects.length}
               </span>
             </div>
 

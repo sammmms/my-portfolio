@@ -34,16 +34,12 @@ export default function ProjectGridView({
       {groups.map((group) => (
         <section key={group.year} className="relative">
           {/* Year Section Header */}
-          <div className="sticky top-20 z-20 bg-white/90 dark:bg-black/90 backdrop-blur-md py-3 mb-6 border-b border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-black dark:text-white font-mono font-bold text-xs">
-                {group.year.slice(0, 4)}
-              </span>
-              <h2 className="text-xl font-bold tracking-tight text-black dark:text-white">
-                {group.year}
-              </h2>
-            </div>
-            <span className="text-xs font-mono text-neutral-400 dark:text-neutral-600 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 rounded-full">
+          <div className="flex items-center gap-4 pt-14 pb-6 first:pt-2">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter text-black dark:text-white">
+              {group.year}
+            </h2>
+            <div className="h-px flex-1 bg-neutral-200 dark:bg-neutral-800" />
+            <span className="text-xs font-mono text-neutral-400 dark:text-neutral-500">
               {group.projects.length} {group.projects.length === 1 ? "project" : "projects"}
             </span>
           </div>
