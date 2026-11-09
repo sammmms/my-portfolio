@@ -3,8 +3,21 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
-    id: "genshin-checkin",
-    title: "genshin checkin — cross-platform hoyolab daily claim hub & scheduler",
+    id: "tiktok-streak",
+    title: "tiktok streak — automated daily streak keeper & interactive tui hub",
+    category: "Python 3, Playwright, Questionary TUI, macOS LaunchAgent, Windows Task Scheduler, Webhooks",
+    date: "nov 2026",
+    link: "https://github.com/sammmms/tiktok-streak",
+    links: [
+      [Github, "https://github.com/sammmms/tiktok-streak"],
+    ],
+    description:
+      "Zero-hassle, cross-platform interactive CLI hub and daily streak assistant for TikTok DM conversations. Built to preserve streaks effortlessly without manual daily app messaging. Features a 100% interactive cursor-based terminal interface (TUI) powered by Questionary, eliminating manual script arguments and JSON editing. Engineered with persistent Playwright browser automation with stealth profiles, one-touch multi-select contact checklists with Select-All and exclusion blacklist filters, custom grouping and labeling (Sahabat, Prioritas, Mutuals) with dedicated custom message templates, and automated DM contact scraping. Includes a resilient OS-level scheduler manager provisioning macOS LaunchAgents with automatic sleep/lid wake-up catch-up execution, Windows Task Scheduler tasks, Linux crontabs, and dual Discord/Telegram push notification webhooks with real-time delivery reports.",
+    src: "/projects/tiktok-streak.png",
+  },
+  {
+    id: "hoyolab",
+    title: "hoyolab — cross-platform daily claim hub & game toggle scheduler",
     category: "Python 3, REST API, SQLite, Playwright, macOS launchd, Windows Task Scheduler, Linux cron",
     date: "nov 2026",
     link: "https://github.com/sammmms/genshin-checkin",
@@ -12,7 +25,7 @@ export const projects: Project[] = [
       [Github, "https://github.com/sammmms/genshin-checkin"],
     ],
     description:
-      "Zero-dependency, cross-platform interactive CLI dashboard and daily reward automation assistant for Honkai: Star Rail and Genshin Impact (plus Zenless Zone Zero). Built around a frictionless 'let you check in easily' UX philosophy that eliminates manual token hunting and browser DevTools inspection. Features an instant local browser session auto-importer extracting live ltoken_v2 credentials from Zen Browser, Floorp, and Firefox SQLite profiles in <0.1s, paired with a visual Playwright fallback window for OAuth (Google/Apple) logins. Engineered with an intelligent live status hub displaying real-time monthly streak tallies, exact catalog reward items, and token validity, coupled with an auto-healing session refresher. Includes a 1-click background scheduler manager automatically provisioning native OS-level daily timers—macOS launchd (with automatic catch-up on laptop lid wake), Windows Task Scheduler (schtasks), and Linux crontab.",
+      "Zero-dependency, cross-platform interactive CLI dashboard and daily reward automation assistant for all HoYoverse titles: Genshin Impact, Honkai: Star Rail, Zenless Zone Zero, Honkai Impact 3rd, Tears of Themis, and HoYoLAB Community. Built around a frictionless 'let you check in easily' UX philosophy that eliminates manual token hunting and browser DevTools inspection. Features granular game toggling allowing users to selectively enable/disable check-ins per game, paired with an instant local browser session auto-importer extracting live ltoken_v2 credentials from Zen Browser, Floorp, and Firefox SQLite profiles in <0.1s. Engineered with an intelligent live status hub displaying real-time monthly streak tallies, exact catalog reward items, and token validity, coupled with an auto-healing session refresher. Includes a 1-click background scheduler manager automatically provisioning native OS-level daily timers—macOS launchd (with automatic catch-up on laptop lid wake), Windows Task Scheduler (schtasks), and Linux crontab.",
     src: "/projects/genshin-checkin.png",
   },
   {
