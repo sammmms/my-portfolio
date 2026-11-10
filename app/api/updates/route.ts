@@ -16,6 +16,22 @@ const APP_UPDATES: Record<string, any> = {
     ],
     download_url: "https://raw.githubusercontent.com/sammmms/tiktok-streak/main/tiktok-streak.py"
   },
+  "snapchat-streak": {
+    app: "snapchat-streak",
+    name: "Snapchat Streak Auto-Saver & Helper Hub",
+    version: "1.0.0",
+    release_date: "2026-11-10",
+    changelog: [
+      "🚀 Initial Release: Snapchat Streak Automation Hub",
+      "📸 Automated Snap camera capture & dispatch via web.snapchat.com",
+      "🔥 Auto-detect friends with active Snap streaks",
+      "⏰ macOS LaunchAgent scheduler with morning run and wake-up catch-up",
+      "📜 3-Day activity and audit logging with automatic pruning",
+      "📱 Native Telegram Bot & Discord Webhook notification integration",
+      "🎨 Dynamic Snap caption generator with variable formatting ({name}, {first_name}, {time_greeting}, {date})"
+    ],
+    download_url: "https://raw.githubusercontent.com/sammmms/snapchat-streak/main/snapchat-streak.py"
+  },
   "hoyolab": {
     app: "hoyolab",
     name: "HoYoLAB Easy Check-In Hub",
