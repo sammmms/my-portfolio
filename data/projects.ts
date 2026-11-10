@@ -3,6 +3,33 @@ import { Github, Globe, Play, Linkedin } from "lucide-react";
 
 export const projects: Project[] = [
   {
+    id: "script-hub",
+    title: "script showcase & agent hub — autonomous cli suite & centralized update api",
+    category: "Next.js 15, React 19, TypeScript, Tailwind CSS, Vercel Edge, Cloudflare DNS, Lucide Icons",
+    date: "nov 2026",
+    link: "https://script.wsnsam.my.id",
+    links: [
+      [Github, "https://github.com/sammmms/script-hub"],
+      [Globe, "https://script.wsnsam.my.id"],
+    ],
+    description:
+      "Modern showcase platform, centralized distribution hub, and autonomous AI agent dispatch center for Samuel's suite of daily automation scripts (TikTok Streak, Snapchat Streak, HoYoLAB Check-in). Engineered with a high-conversion, terminal-aesthetic design system and 1-click 'Let Agent Do It' prompt generators compatible with Claude Code, Cursor, Antigravity, and Windsurf. Powers centralized in-app version update checking via /api/updates and instant 1-line installation redirects (/install/tiktok, /install/snapchat, /install/hoyolab), deployed on Vercel with Cloudflare DNS management.",
+    src: "/projects/script-hub.png",
+  },
+  {
+    id: "snapchat-streak",
+    title: "snapchat streak — automated photo snap keeper & virtual camera daemon",
+    category: "Python 3, Playwright, Chromium Stealth, Fake Media Stream, Questionary TUI, macOS launchd",
+    date: "nov 2026",
+    link: "https://github.com/sammmms/snapchat-streak",
+    links: [
+      [Github, "https://github.com/sammmms/snapchat-streak"],
+    ],
+    description:
+      "Autonomous, cross-platform CLI hub and daily streak assistant for Snapchat. Built specifically to conquer Snapchat's strict policy requiring genuine photo snaps (text messages do not maintain streaks). Powered by Playwright Chromium with virtual camera stream injection (fake-device-for-media-stream), allowing headless and unattended photo snap captures and automated delivery to selected streak partners. Features an interactive Questionary TUI dashboard with live streak tallies, instant SQLite session cookie detection (<1ms), multi-select recipient checklists, and native macOS LaunchAgent automation running daily at 08:30 AM with automatic sleep/lid wake-up catch-up.",
+    src: "/projects/snapchat-streak.png",
+  },
+  {
     id: "tiktok-streak",
     title: "tiktok streak — automated daily streak keeper & interactive tui hub",
     category: "Python 3, Playwright, Questionary TUI, macOS LaunchAgent, Windows Task Scheduler, Webhooks",
@@ -17,12 +44,12 @@ export const projects: Project[] = [
   },
   {
     id: "hoyolab",
-    title: "hoyolab — cross-platform daily claim hub & game toggle scheduler",
+    title: "hoyolab check-in — cross-platform daily claim hub & multi-game scheduler",
     category: "Python 3, REST API, SQLite, Playwright, macOS launchd, Windows Task Scheduler, Linux cron",
     date: "nov 2026",
-    link: "https://github.com/sammmms/genshin-checkin",
+    link: "https://github.com/sammmms/hoyolab-checkin",
     links: [
-      [Github, "https://github.com/sammmms/genshin-checkin"],
+      [Github, "https://github.com/sammmms/hoyolab-checkin"],
     ],
     description:
       "Zero-dependency, cross-platform interactive CLI dashboard and daily reward automation assistant for all HoYoverse titles: Genshin Impact, Honkai: Star Rail, Zenless Zone Zero, Honkai Impact 3rd, Tears of Themis, and HoYoLAB Community. Built around a frictionless 'let you check in easily' UX philosophy that eliminates manual token hunting and browser DevTools inspection. Features granular game toggling allowing users to selectively enable/disable check-ins per game, paired with an instant local browser session auto-importer extracting live ltoken_v2 credentials from Zen Browser, Floorp, and Firefox SQLite profiles in <0.1s. Engineered with an intelligent live status hub displaying real-time monthly streak tallies, exact catalog reward items, and token validity, coupled with an auto-healing session refresher. Includes a 1-click background scheduler manager automatically provisioning native OS-level daily timers—macOS launchd (with automatic catch-up on laptop lid wake), Windows Task Scheduler (schtasks), and Linux crontab.",

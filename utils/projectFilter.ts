@@ -1,6 +1,8 @@
 import Project from "@/models/project";
 
 export const FEATURED_PROJECT_IDS = new Set([
+  "script-hub",
+  "snapchat-streak",
   "tiktok-streak",
   "hoyolab",
   "jukebox",
