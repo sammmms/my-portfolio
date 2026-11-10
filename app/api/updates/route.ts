@@ -32,31 +32,44 @@ const APP_UPDATES: Record<string, any> = {
     ],
     download_url: "https://raw.githubusercontent.com/sammmms/snapchat-streak/main/snapchat-streak.py"
   },
-  "hoyolab": {
-    app: "hoyolab",
-    name: "HoYoLAB Easy Check-In Hub",
-    version: "1.2.0",
-    release_date: "2026-11-09",
+  "hoyolab-checkin": {
+    app: "hoyolab-checkin",
+    name: "HoYoLAB Check-In Hub",
+    version: "1.3.0",
+    release_date: "2026-11-10",
     changelog: [
-      "🎮 Mendukung seluruh 6 judul game HoYoverse: Genshin Impact, Honkai: Star Rail, Zenless Zone Zero, Honkai Impact 3rd, Tears of Themis, HoYoLAB Community",
-      "⚙️ Fitur Game Toggle checklist: bebas aktifkan/nonaktifkan check-in untuk game tertentu",
-      "⚡ Perintah CLI resmi 'hoyolab' di samping alias 'genshin-checkin'",
-      "🔄 In-app auto-updater dengan progress check & 1-klik pasang update"
+      "🏷️  Project resmi diganti nama menjadi 'hoyolab-checkin'",
+      "📦 Standardisasi install.sh dengan Virtual Environment terisolasi",
+      "⏰ Multi-interval hourly wake-up catch-up pada macOS LaunchAgent",
+      "⚡ Dukungan penuh untuk 3 alias perintah: 'hoyolab-checkin', 'hoyolab', dan 'genshin-checkin'"
     ],
-    download_url: "https://raw.githubusercontent.com/sammmms/genshin-checkin/main/checkin.py"
+    download_url: "https://raw.githubusercontent.com/sammmms/hoyolab-checkin/main/checkin.py"
+  },
+  "hoyolab": {
+    app: "hoyolab-checkin",
+    name: "HoYoLAB Check-In Hub",
+    version: "1.3.0",
+    release_date: "2026-11-10",
+    changelog: [
+      "🏷️  Project resmi diganti nama menjadi 'hoyolab-checkin'",
+      "📦 Standardisasi install.sh dengan Virtual Environment terisolasi",
+      "⏰ Multi-interval hourly wake-up catch-up pada macOS LaunchAgent",
+      "⚡ Dukungan penuh untuk 3 alias perintah: 'hoyolab-checkin', 'hoyolab', dan 'genshin-checkin'"
+    ],
+    download_url: "https://raw.githubusercontent.com/sammmms/hoyolab-checkin/main/checkin.py"
   },
   "genshin-checkin": {
-    app: "genshin-checkin",
-    name: "HoYoLAB Easy Check-In Hub (formerly genshin-checkin)",
-    version: "1.2.0",
-    release_date: "2026-11-09",
+    app: "hoyolab-checkin",
+    name: "HoYoLAB Check-In Hub (formerly genshin-checkin)",
+    version: "1.3.0",
+    release_date: "2026-11-10",
     changelog: [
-      "🎮 Rebranded to 'hoyolab' with full support for all 6 HoYoverse games",
-      "⚙️ Added Game Toggle feature to enable/disable check-ins per game",
-      "⚡ New official global command 'hoyolab'",
-      "🔄 In-app auto-updater with changelog prompt"
+      "🏷️  Project resmi diganti nama menjadi 'hoyolab-checkin'",
+      "📦 Standardisasi install.sh dengan Virtual Environment terisolasi",
+      "⏰ Multi-interval hourly wake-up catch-up pada macOS LaunchAgent",
+      "⚡ Dukungan penuh untuk 3 alias perintah: 'hoyolab-checkin', 'hoyolab', dan 'genshin-checkin'"
     ],
-    download_url: "https://raw.githubusercontent.com/sammmms/genshin-checkin/main/checkin.py"
+    download_url: "https://raw.githubusercontent.com/sammmms/hoyolab-checkin/main/checkin.py"
   }
 };
 
