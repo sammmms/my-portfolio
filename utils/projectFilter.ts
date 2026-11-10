@@ -7,6 +7,7 @@ export const FEATURED_PROJECT_IDS = new Set([
   "hoyolab",
   "jukebox",
   "orbit",
+  "macpaper",
   "backdrop-player",
   "kasir-pos",
   "telurin",
